@@ -1,0 +1,26 @@
+<!-- <div class="sayfa">
+    <div class="d-flex flex-wrap">
+    @for (product of products; track $index) {
+        <app-product-card [product]= "product" (called)="cardSelected($event)" />
+    }
+    </div>
+    @if (userHasRole('admin')) { 
+        <button class="btn btn-primary" [routerLink]="['./ilan-ver']" [relativeTo]="router.parent">İlan Ver</button>
+        }
+        admin rolu olursa bu butonu goster demis olduk
+
+        <button class="btn btn-primary mt-2" (click)="createProduct()">Create Product</button>
+</div> -->
+
+<div class="container-fluid">
+    Products:
+    <div class="d-flex flex-wrap">
+        <app-product-card class="m-2" 
+           *ngFor="let product of products" [product]="product"
+           (edit)="editProduct($event)"
+           (delete)="deleteProduct($event)"
+           >
+        </app-product-card>
+    </div>
+    <button class="btn btn-primary mt-2" (click)="createProduct()">Create Product</button>
+</div> 

@@ -1,0 +1,46 @@
+<!-- <div class="container-fluid m-2">
+    <form [formGroup]="form" (submit)="submit()">
+        <div class="row">
+            <div class="col">
+                <div style="float:left">
+                    <div class="dropdown">
+                        <div >
+                            Fruit: 
+                        </div>
+                        <div>
+                            <button class="form-select mt-2 mb-4" type="button" id="fruitSelectButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <div>
+                                    @if (selectedFruit == null) {
+                                        Select Fruit
+                                    } @else {
+                                        <img src="{{selectedFruit.image}}" height="20px"/>
+                                        {{ selectedFruit.name}}
+                                    }
+                                </div>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="fruitSelectButton" id="fruits">
+                                @for (fruit of fruits; track fruit.id) {
+                                    <li>
+                                        <a class="dropdown-item" (click)="fruitSelect(fruit)">
+                                            <img src="{{ fruit.image }}" height="30px" width="30px" class="img-dropdown">
+                                            {{ fruit.name}}
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="float:left">
+                    <div id="selected-image" style="align-items: center; display:flex;margin-left:5px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="txtCount" class="form-label">Count</label>
+            <input formControlName="count" type="number" class="form-control" id="txtCount" placeholder="Count">
+        </div>
+        <button class="btn btn-primary" type="submit">Accept</button>
+    </form>
+</div> -->

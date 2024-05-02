@@ -1,0 +1,37 @@
+<!-- <div class="container-fluid user-select-none">
+    <div class="mt-2">
+    @if (boxes.length == 0) {
+        It seems there are no boxes...
+    } @else {
+        <table class="table table-hover boxTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Count</th>
+                    <th>Capacity</th>
+                    <th>Fruit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (box of boxes; track box.id) {
+                    <tr [class.table-primary]="box.id == selectedBox?.id"
+                    class="boxRow"
+                    (click)="selectBox(box)">
+                        <td>{{box.id}}</td>
+                        <td>{{box.count}}</td>
+                        <td>{{box.capacity}}</td>
+                        <td><img src="{{box.image}}" height="40px"/></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    </div>
+    <div class="mt-2">
+        <button class="btn btn-primary" (click)="createBox()">Create Box</button>
+        @if (selectedBox != null) {
+            <button class="btn btn-warning ms-2" (click)="editBox()">Edit Box</button>
+            <button class="btn btn-danger ms-2" (click)="deleteBox()">Delete Box</button>
+        }
+    </div>
+</div> -->
