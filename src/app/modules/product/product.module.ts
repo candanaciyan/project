@@ -11,8 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../../shared/shared.module';
-import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
-
 
 @NgModule({
   declarations: [
@@ -20,7 +18,7 @@ import { ProductCardComponent } from '../../shared/components/product-card/produ
     ProductAcceptComponent,
     ProductManagementComponent,
     ProductCreateComponent,
-    
+       
   ],
   imports: [
     CommonModule,

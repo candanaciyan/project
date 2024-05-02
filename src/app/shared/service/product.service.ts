@@ -2,32 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product';
+import { SuccessResponse } from '../model/successResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
   editingProduct: Product | null = null;
+  http: any;
 
   constructor(
     private httpClient: HttpClient,
   ) { }
 
 
-  createProduct(madeProduct: any):Observable<any> {
-    return this.httpClient.post<any>('/product/create', madeProduct);
-  }
 
   getAllProducts():Observable<Product[]> {
     return this.httpClient.get<Product[]>('/product/all');
   }
-  createFruit(fruit: Fruit): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/fruit/create', fruit);
+  createProduct(product: Product): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/product/create', product);
   }
 
-  getAllFruits(): Observable<Fruit[]> {
-    return this.http.get<Fruit[]>('/fruit/');
-  }
   deleteFruit(id: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/fruit/delete', { id } );
   }

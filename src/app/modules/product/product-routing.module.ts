@@ -9,10 +9,6 @@ import { roleControlGuard } from '../../shared/guard/role-control.guard';
 
 const routes: Routes = [
   { path: '', component: ProductManagementComponent, pathMatch: 'full'},
-<<<<<<< HEAD
-=======
-  { path: 'management', component: ProductManagementComponent, pathMatch: 'full'},
->>>>>>> 13524fea6a28e3d619b7b0aa4d7840557841e40b
   { path: 'accept', component: ProductAcceptComponent, pathMatch: 'full'},
   { path: 'create', component: ProductCreateComponent, canActivate: [roleControlGuard(ROL_ADMIN)]},
   { path: 'sale', component: ProductSaleComponent, pathMatch: 'full'},

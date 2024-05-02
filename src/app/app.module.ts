@@ -1,6 +1,5 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -15,12 +14,14 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { environment } from '../environments/environments';
 import { urlInterceptor } from './core/interceptor/url.interceptor';
 import { APP_CONFIG } from './app.config';
+import { MenuComponent } from './core/component/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AccountComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
