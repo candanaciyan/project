@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../../shared/shared.module';
+import { UserManagementComponent } from './user-management/user-management.component';
 
 
 
@@ -18,6 +19,7 @@ import { SharedModule } from '../../shared/shared.module';
   declarations: [
     UserCreateComponent,
     UserPasswordChangeComponent,
+    UserManagementComponent,
     
   ],
   imports: [
