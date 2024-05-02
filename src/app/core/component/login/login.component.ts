@@ -2,10 +2,7 @@ import { Component } from '@angular/core';
 import { LoginService } from '../../service/login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
-<<<<<<< HEAD
 import { ToastrService } from 'ngx-toastr';
-=======
->>>>>>> 13524fea6a28e3d619b7b0aa4d7840557841e40b
 
 @Component({
   selector: 'app-login',
