@@ -30,7 +30,7 @@ export class ProductService {
   accept(fruitId: number, count: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/fruit/accept', {fruitId, count});
   }
-  sale(fruitId: number, count: number): Observable<SuccessResponse> {
+  saleProduct(fruitId: number, count: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/fruit/sale', {fruitId, count});
   }
   getFruitCount(id: number): Observable<number> {
