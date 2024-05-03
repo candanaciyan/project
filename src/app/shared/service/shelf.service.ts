@@ -23,9 +23,14 @@ export class ShelfService {
   
 
 
-  createShelf(capacity: number, count: number): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/box/create', {capacity, count});
+  createShelf(count: number,capacity: number): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/shelf/create', {count,capacity});
   }
+  // geriye obs succres donecek
+  // post yontemiyle ve buna cap ve count u parametre olarak yaziyoruz
+  // geriye de succres donecek
+  
+
   deleteShelf(id: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/box/delete', {id});
   }
