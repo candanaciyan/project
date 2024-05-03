@@ -58,7 +58,7 @@ export class LoginService {
     let payload = this.parseJwt(this.token);
     this.role = payload.role;//bunun icine de ekledik login response icine tokendan geleni degiskeinin icine saklamis olduk
     this.userId = payload.userId;//bunun icine de ekledik login response icine tokendan geleni degiskeinin icine saklamis olduk
-    return data;
+    return data;//bu gerekli mi return olmasi digerinde yok
   }
   logout() {
     this.loggedIn = false;
