@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
-  constructor(
-  ) {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+export class AppComponent{
+
   title = 'project';
 }

@@ -21,9 +21,16 @@
           <li class="nav-item">
             <a class="nav-link">Features</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link">Pricing</a>
-          </li>
+          @if (role =='aaa') {
+            <li class="nav-item">
+              <a
+                routerLinkActive="active"
+                [routerLink]="['./product']"
+                [relativeTo]="route"
+                class="nav-link"
+                >REPORT</a
+              >
+            </li>}
           <li class="nav-item">
             <a class="nav-link disabled" aria-disabled="true">Disabled</a>
           </li>
@@ -55,14 +62,14 @@
   </nav>
   <div class="w-100 h-100 d-flex">
     <div class="kategoriler h-100">
-      <button
+      @if (role =='admin'){<button
         class="btn btn-primary"
         [routerLink]="['./product-management']"
         [relativeTo]="route"
         [routerLinkActive]="['aktifKategori']"
       >
         Product Management
-      </button>
+      </button>}
       <button
         class="btn btn-primary"
         [routerLink]="['./product-create']"

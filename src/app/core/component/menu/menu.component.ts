@@ -8,8 +8,8 @@ import { LoginService } from '../../service/login.service';
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
-export class MenuComponent implements OnInit{
-
+export class MenuComponent{
+  role = '';
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -17,9 +17,6 @@ export class MenuComponent implements OnInit{
     private toastr: ToastrService,
   ) {}
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
   logout() {
     this.loginService.logout();
