@@ -9,32 +9,37 @@ import { SuccessResponse } from '../model/successResponse';
 })
 export class ProductService {
   editingProduct: Product | null = null;
-  http: any;
-
+  
   constructor(
-    private httpClient: HttpClient,
+    private http: HttpClient,
   ) { }
 
 
 
   getAllProducts():Observable<Product[]> {
-    return this.httpClient.get<Product[]>('/product/all');
+    return this.http.get<Product[]>('/product/all');
   }
   createProduct(product: Product): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/product/create', product);
   }
 
-  deleteFruit(id: number): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/fruit/delete', { id } );
+  deleteProduct(id: number): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/product/delete', { id } );
   }
-  accept(fruitId: number, count: number): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/fruit/accept', {fruitId, count});
+  // cagiracagimiz urlyi vardik ve buraya fruitin id sini verecegiz
+  // id diye yazarsan 3-5 gibi id degerini yazar
+  // { id } boyle koyarsan json objesi icinde id keyine karsilik id degiskeninin degerini icine  koyuyor oluyor
+  // ve json gonderiyor bu onemli
+  
+
+  acceptProduct(productId: number, count: number): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/product/accept', {productId, count});
   }
-  saleProduct(fruitId: number, count: number): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/fruit/sale', {fruitId, count});
+  saleProduct(productId: number, count: number): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/product/sale', {productId, count});
   }
-  getFruitCount(id: number): Observable<number> {
-    return this.http.get<number>('/fruit/count/' + id);
+  getProductCount(id: number): Observable<number> {
+    return this.http.get<number>('/product/count/' + id);
   }
 
 }

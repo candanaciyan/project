@@ -10,7 +10,7 @@ import { Product } from '../../../shared/model/product';
   templateUrl: './product-management.component.html',
   styleUrl: './product-management.component.scss'
 })
-export class ProductManagementComponent implements OnInit{
+export class ProductManagementComponent implements OnInit {
 
 
   products: Product[] = [];
@@ -25,7 +25,7 @@ export class ProductManagementComponent implements OnInit{
   ngOnInit(): void {
     this.refreshProducts();
   }
-  refreshProducts(){
+  refreshProducts() {
     this.productService.getAllProducts().subscribe({
       next: (result) => {
         this.products = result;
@@ -44,12 +44,34 @@ export class ProductManagementComponent implements OnInit{
   createProduct() {
     this.router.navigate(['create'], { relativeTo: this.route });
     //router ile o sayfaya yonlendirdi 
-    }
+  }
 
-    editProduct($event: any) {
-      throw new Error('Method not implemented.');
+  deleteProduct(product: Product) {
+    this.productService.deleteProduct(product.id).subscribe({
+      next: (data) => {
+        this.toastr.info('Fruit deleted');
+        this.refreshProducts();
       }
-      deleteProduct($event: any) {
-      throw new Error('Method not implemented.');
-      }
+    });
+  }
+  // fruiti alacak
+  // service icerisini silmek icin id yi ben verecegim burdan geriye 
+  // nextten de donen degeri okuyacagim
+  // toastr yoktu ekledik const icine
+  // bunu cagiriyoruz next icinde
+  // bu sayede guncelleme islemi yapiliyor ve ekrandan sildigi belli oluyor
+  
+
+  editProduct(product: Product) {
+    this.productService.editingProduct = product;
+    this.router.navigate(['create'], { relativeTo: this.route });
+  }
+//   once saklayip sonra da create ekranini acacagiz
+// editingfruit icerisine buraya gonderilen fruit objesini sakliyoruz 
+// pesinden de yonlendiriyoruz 
+//create ekranina gitti
+
+
+
 }
+

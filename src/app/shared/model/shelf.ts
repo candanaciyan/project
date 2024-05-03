@@ -3,6 +3,6 @@ export class Shelf {
         public id: number,
         public capacity: number,
         public count: number,
-        public image: string
+        public image: string,
     ) {}
 }

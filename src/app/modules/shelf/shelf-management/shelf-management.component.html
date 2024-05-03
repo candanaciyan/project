@@ -1,6 +1,6 @@
-<!-- <div class="container-fluid user-select-none">
+<div class="container-fluid user-select-none">
     <div class="mt-2">
-    @if (boxes.length == 0) {
+    @if (shelves.length == 0) {
         It seems there are no boxes...
     } @else {
         <table class="table table-hover boxTable">
@@ -9,18 +9,18 @@
                     <th>Id</th>
                     <th>Count</th>
                     <th>Capacity</th>
-                    <th>Fruit</th>
+                    <th>Product</th>
                 </tr>
             </thead>
             <tbody>
-                @for (box of boxes; track box.id) {
-                    <tr [class.table-primary]="box.id == selectedBox?.id"
-                    class="boxRow"
-                    (click)="selectBox(box)">
-                        <td>{{box.id}}</td>
-                        <td>{{box.count}}</td>
-                        <td>{{box.capacity}}</td>
-                        <td><img src="{{box.image}}" height="40px"/></td>
+                @for (shelf of shelves; track shelf.id) {
+                    <tr [class.table-primary]="shelf.id == selectedShelf?.id"
+                    class="shelfRow"
+                    (click)="selectShelf(shelf)">
+                        <td>{{shelf.id}}</td>
+                        <td>{{shelf.count}}</td>
+                        <td>{{shelf.capacity}}</td>
+                        <td><img src="{{shelf.image}}" height="40px"/></td>
                     </tr>
                 }
             </tbody>
@@ -28,10 +28,10 @@
     }
     </div>
     <div class="mt-2">
-        <button class="btn btn-primary" (click)="createBox()">Create Box</button>
-        @if (selectedBox != null) {
-            <button class="btn btn-warning ms-2" (click)="editBox()">Edit Box</button>
-            <button class="btn btn-danger ms-2" (click)="deleteBox()">Delete Box</button>
+        <button class="btn btn-primary" (click)="createShelf()">Create Shelf</button>
+        @if (selectedShelf != null) {
+            <button class="btn btn-warning ms-2" (click)="editShelf()">Edit Shelf</button>
+            <button class="btn btn-danger ms-2" (click)="deleteShelf()">Delete Shelf</button>
         }
     </div>
-</div> -->
+</div>

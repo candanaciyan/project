@@ -14,7 +14,7 @@ export class LoginService {
   userId = "";
   role = "";
   constructor(
-    private httpClient: HttpClient,
+    private http: HttpClient,
 
   ) { }
 
@@ -24,7 +24,7 @@ export class LoginService {
   //tokeni gondermezsek sunucu artik cevap vermeyecek durumda olacak cunku artik security var
   //bu token her requestin headerinda gonderilmesi gerekiyor
   login(email: string, password: string): Observable<any> {
-    return this.httpClient.post<any>('/login', { email: email, password :password }).pipe(
+    return this.http.post<any>('/login', { email: email, password :password }).pipe(
       map(data => this.parseLoginResponse(data, email, password))
     );
 //     <> arasina donecek olan degeri girecegim.dto classi yaratmissam onu buraya yaziyorum dogrusu bu ama any yazarsam da ise yariyor bu javadaki object classi gibi heryola gidiyor

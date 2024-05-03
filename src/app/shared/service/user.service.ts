@@ -10,15 +10,15 @@ import { SuccessResponse } from '../model/successResponse';
 export class UserService {
 
   constructor(
-    private httpClient: HttpClient,
+    private http: HttpClient,
   ) { }
 
   createUser(createForm: any):Observable<any> {
-    return this.httpClient.post<any>('/user/create', createForm);
+    return this.http.post<any>('/user/create', createForm);
   }
 
   public changePassword(dto: ChangePasswordRequest): Observable<SuccessResponse> {
-    return this.httpClient.post<SuccessResponse>("/changepassword", dto);
+    return this.http.post<SuccessResponse>("/changepassword", dto);
   }
   //post ile olacak donus tipi de sunucu tarafinda tanimladigimiz default donus tipi var
   //fakat bu dto heryerde ortak olarak kullanilacak bir dto oldugu icin yerini shared tarafinda olmasi gerkiyor core da degil

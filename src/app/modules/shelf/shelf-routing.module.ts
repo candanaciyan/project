@@ -4,10 +4,10 @@ import { ShelfManagementComponent } from './shelf-management/shelf-management.co
 import { ShelfEditComponent } from './shelf-edit/shelf-edit.component';
 
 const routes: Routes = [
-  { path: '', component: ShelfManagementComponent, pathMatch: 'full'},
-  { path: 'shelf-edit', component: ShelfEditComponent, pathMatch: 'full'},
+  { path: '', component: ShelfManagementComponent, pathMatch: 'full' },
+   { path: 'edit', component: ShelfEditComponent },
 
-];
+ ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

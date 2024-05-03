@@ -18,11 +18,10 @@ const routes: Routes = [
         .then(m => m.ShelfModule) },
     { path: 'user', loadChildren: 
         () => import('./modules/user/user.module')
-        .then(m => m.UserModule) },
-
-    { path: 'account', component: AccountComponent }
+        .then(m => m.UserModule) },    
   ]
 },
+{ path: 'account', component: AccountComponent },
   { path: '**', component: LoginComponent },
 ];
 

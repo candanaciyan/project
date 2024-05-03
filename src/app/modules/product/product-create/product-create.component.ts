@@ -21,6 +21,9 @@ export class ProductCreateComponent implements OnInit {
     });
     selectedImage = '';
     productId = 0;
+//     buraya selected image gibi formun disinda saklayacagim id degiskeni olusturduk 
+// id 0 sa yaratma modunda calisiyor create fruit  degilse guncelleme modunda aciyor id ye bakip
+
 
   constructor(
     private router: Router,
@@ -64,9 +67,8 @@ export class ProductCreateComponent implements OnInit {
     if (this.productService.editingProduct != null) {
       // edit mode
       this.productId = this.productService.editingProduct.id;
-      this.productForm.setValue(
-        { name: this.productService.editingProduct.name, 
-          minimum: this.productService.editingProduct.minimum, 
+      this.productForm.patchValue(
+        { name: this.productService.editingProduct.name, minimum: this.productService.editingProduct.minimum, 
         });
       this.selectedImage = this.productService.editingProduct.image;
       this.productService.editingProduct = null;
@@ -74,7 +76,21 @@ export class ProductCreateComponent implements OnInit {
       // create mode
     }
   }
+  // eger null degilse
+  // o zaman edit mode ta acmisizdir
+  // benim artik degisiklik yapacagim icin id ye de ihtiyacim var//bu fruitid nin degeri degistirecegimiz fruitin idsi olacak
+  // formumuzun degerini veriyoruz ama verirken tum degerlerini vermemiz gerekiyor 
+  // name ve minimumu vermek gerekiyor yani eger sadece birini vermek istiyorsan cagiracagimiz fonksiyon setValue degil 
+  // patchValue olacak bunu daha once gostermisti
+  // buraya json formatinda bilgileri yaziyoruz simdi 
+  // editingfruit icindeki objenin degerlerini yazacagiz 
+  // img degeri de id gibi ayni sekilde olacak
+//   id 0 sa create oluyor eger degilse o zaman edite geciyor ve guncelliyor
+// bu mantikla yazdi
+// ismini minimumu degistirebildim resmini de degistirebildim boylece
+// denedik sorun olmadi
 
+  
 
   imageSelect(image: string) {
     this.selectedImage = image;
