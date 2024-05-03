@@ -7,9 +7,9 @@ import { ProductAcceptComponent } from './product-accept/product-accept.componen
 import { ProductManagementComponent } from './product-management/product-management.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
@@ -24,10 +24,10 @@ import { SharedModule } from '../../shared/shared.module';
     CommonModule,
     ProductRoutingModule,
     FormsModule,
-    HttpClientModule,
+  
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule,
+   
     SharedModule,
   ]
 })

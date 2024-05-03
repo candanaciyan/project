@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../../service/login.service';
 
@@ -8,7 +8,8 @@ import { LoginService } from '../../service/login.service';
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })
-export class MenuComponent{
+export class MenuComponent implements OnInit {
+  url = "";
   role = '';
   constructor(
     private loginService: LoginService,
@@ -16,6 +17,16 @@ export class MenuComponent{
     public route: ActivatedRoute,
     private toastr: ToastrService,
   ) {}
+   ngOnInit(): void {
+    //  this.router.events.subscribe({
+    //  next: (event) => {
+    // if (event instanceof NavigationEnd) {
+    //  this.url = event.url;
+    //  }
+    // }
+    // });
+    }
+    
 
 
   logout() {
