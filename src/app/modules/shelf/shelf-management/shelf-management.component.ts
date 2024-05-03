@@ -87,6 +87,10 @@ export class ShelfManagementComponent implements OnInit {
             next: (data) => {
               this.toastr.info('Shelf updated');
               this.refreshShelves();
+//               selectedbox icinden  idyi  e   aldik
+// kapanan ekrandan da capasity I aldik
+// ve son olarak refresh yaptik
+
             },
             error: (err) => {
               this.toastr.error(err.error.mesaj);
@@ -105,14 +109,14 @@ export class ShelfManagementComponent implements OnInit {
     dialog.afterClosed().subscribe({
       next: (data) => {
         if (data?.result === 'yes') {
-          this._deleteShelf();
+          this.mainDeleteShelf();
         }
       }
     });
-    dialog.componentInstance.question = 'Are you sure for delete this shelf?';
+    dialog.componentInstance.called = 'Are you sure for delete this shelf?';
 
   }
-  _deleteShelf() {
+  mainDeleteShelf() {
     if (this.selectedShelf) {
       this.shelfService.deleteShelf(this.selectedShelf.id).subscribe({
         next: (data) => {
@@ -125,5 +129,13 @@ export class ShelfManagementComponent implements OnInit {
       });
     }
   }
+//   burda da silme islemini hakikaten yapacak						
+// bu if in icersinde olursa compiler buranin null gelmeyeceginden emin oluyor ve soru isareti gerekmiyor bi alt satirdaki selectbox a						
+// null degilse demis olduk yani						
+// 			selected box in idsini verdik			
+						
+// 		cevap dondugunde data olarak alip 				
+// 		ekrani guncellemek icin bunu cagirdik				
+
 
 }

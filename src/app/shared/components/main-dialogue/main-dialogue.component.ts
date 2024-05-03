@@ -10,7 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MainDialogueComponent {
 
-  question = '';
+  called = '';
+ 
   constructor(
     public dialogRef: MatDialogRef<MainDialogueComponent>,
     private router: Router,

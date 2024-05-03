@@ -15,6 +15,7 @@ export class ShelfEditComponent {
     count: 1,
     capacity: 0,
   });
+  dialogRef: any;
 
   constructor(
     private router: Router,
@@ -26,6 +27,14 @@ export class ShelfEditComponent {
     
     
   ) {}
+  close() {
+    this.dialogRef.close();
+  }
 
+  submit() {
+    const capacity = this.shelfForm.get('capacity')!.value;
+    this.dialogRef.close({capacity});
+    }
+    //box in sadece kapasitesini degistirecegi icin editte bu submitte var sadece
 
 }

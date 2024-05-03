@@ -42,7 +42,7 @@ export class ProductCardComponent {
         }
       }
     });
-    dialog.componentInstance.question = 'Are you sure for delete this product?';
+    dialog.componentInstance.called = 'Are you sure for delete this product?';
   }
   // bu obsv subs metoduyla close yapildiginda su fonksiyon cagrilsin diyebiliyoruz
   // next icinde datayi aliyoruz 
