@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../../../core/service/login.service';
 import { ProductService } from '../../../shared/service/product.service';
 import { FormBuilder } from '@angular/forms';
+import { Product } from '../../../shared/model/product';
 
 @Component({
   selector: 'app-product-accept',
@@ -25,22 +26,22 @@ export class ProductAcceptComponent {
     private fb: FormBuilder,
   ) {}
   ngOnInit(): void {
-    this.refreshFruits();
+    this.refreshProducts();
   }
-  refreshFruits() {
-    this.fruitService.getAllFruits().subscribe({
+  refreshProducts() {
+    this.productService.getAllProducts().subscribe({
       next: (result) => {
-        this.fruits = result;
+        this.products = result;
       }
     });
   }
-  fruitSelect(fruit: Fruit) {
-    this.selectedFruit = fruit;
+  productSelect(product: Product) {
+    this.selectedProduct = product;
   }
   submit() {
-    if (this.selectedFruit) {
-      let count = this.form.get('count')!.value;
-      this.fruitService.accept(this.selectedFruit.id, count).subscribe({
+    if (this.selectedProduct) {
+      let count = this.acceptForm.get('count')!.value;
+      this.productService.acceptProduct(this.selectedProduct.id, count).subscribe({
         next: (result) => {
           this.toastr.info('Fruit accepted');
           this.router.navigate(['/menu']);

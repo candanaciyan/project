@@ -24,15 +24,8 @@ export class ShelfEditComponent {
     private loginService: LoginService,
     private fb: FormBuilder,
     
+    
   ) {}
 
-  close() {
-    this.dialogRef.close();
-  }
-  submit() {
-    const capacity = this.shelfForm.get('capacity')!.value;
-    const count = this.shelfForm.get('count')!.value;
-    this.dialogRef.close({capacity, count});
-  }
 
 }
