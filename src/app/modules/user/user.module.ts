@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { SharedModule } from '../../shared/shared.module';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { AccountComponent } from '../../core/component/account/account.component';
 
 
 
@@ -33,6 +34,9 @@ import { UserManagementComponent } from './user-management/user-management.compo
     SharedModule,
 
    
+  ],
+  exports: [
+    UserPasswordChangeComponent,
   ]
 })
 export class UserModule { }

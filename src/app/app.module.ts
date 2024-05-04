@@ -15,6 +15,7 @@ import { environment } from '../environments/environments';
 import { urlInterceptor } from './core/interceptor/url.interceptor';
 import { APP_CONFIG } from './app.config';
 import { MenuComponent } from './core/component/menu/menu.component';
+import { UserModule } from './modules/user/user.module';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { MenuComponent } from './core/component/menu/menu.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatDialogModule,
+    UserModule,
 
   ],
   providers: [
