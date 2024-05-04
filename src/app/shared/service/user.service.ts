@@ -18,7 +18,7 @@ export class UserService {
   }
 
   public changePassword(dto: ChangePasswordRequest): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>("/changepassword", dto);
+    return this.http.post<SuccessResponse>("/user/changepassword", dto);
   }
   //post ile olacak donus tipi de sunucu tarafinda tanimladigimiz default donus tipi var
   //fakat bu dto heryerde ortak olarak kullanilacak bir dto oldugu icin yerini shared tarafinda olmasi gerkiyor core da degil

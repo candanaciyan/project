@@ -16,6 +16,8 @@ import { urlInterceptor } from './core/interceptor/url.interceptor';
 import { APP_CONFIG } from './app.config';
 import { MenuComponent } from './core/component/menu/menu.component';
 import { UserModule } from './modules/user/user.module';
+import { ProductModule } from './modules/product/product.module';
+import { ShelfModule } from './modules/shelf/shelf.module';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { UserModule } from './modules/user/user.module';
     MatIconModule,
     MatDialogModule,
     UserModule,
+    ProductModule,
+    ShelfModule,
 
   ],
   providers: [

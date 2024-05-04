@@ -49,7 +49,7 @@ export class ProductManagementComponent implements OnInit {
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product.id).subscribe({
       next: (data) => {
-        this.toastr.info('Fruit deleted');
+        this.toastr.info('Product Deleted');
         this.refreshProducts();
       }
     });

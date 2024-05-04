@@ -29,6 +29,10 @@ import { SharedModule } from '../../shared/shared.module';
     ToastrModule.forRoot(),
    
     SharedModule,
-  ]
+  ],
+  exports: [
+    ProductManagementComponent,
+
+  ],
 })
 export class ProductModule { }
