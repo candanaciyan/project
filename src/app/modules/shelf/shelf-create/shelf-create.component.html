@@ -1,13 +1,14 @@
 <div class="container-fluid my-4">
      <form [formGroup]="shelfCreateForm" (submit)="submit()">
-        <div class="mb-3">
-            <label for="txtMinimum" class="form-label">Capacity</label>
-            <input formControlName="capacity" type="number" class="form-control" id="txtMinimum" value="500" [disabled]="true">
-          </div>          
+     
  <div class="mb-3">
-<label class="form-label">How many will be created</label>
- <input formControlName="count" type="number" class="form-control" id="txtMinimum" placeholder="Count">
+<label for="txtCount" class="form-label">How many will be created</label>
+ <input formControlName="count" type="number" class="form-control" id="txtCount" placeholder="Count">
  </div>
+ <div class="mb-3">
+   <label for="txtCapacity" class="form-label">Capacity</label>
+   <input formControlName="capacity" type="number" class="form-control" id="txtCapacity" value="5" placeholder="Capacity"  readonly>
+ </div>     
  <button type="submit" class="btn btn-primary">Create</button>
 <button class="ms-2 btn btn-warning" type="button" (click)="close()">Cancel</button>
  </form>

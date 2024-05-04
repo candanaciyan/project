@@ -6,10 +6,11 @@
         <table class="table table-hover boxTable">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Count</th>
-                    <th>Capacity</th>
-                    <th>Product</th>
+                    <th>Shelf Id</th>
+                    <th>Shelf Count</th>
+                    <th>Shelf Capacity</th>
+                    <th>Product Id</th>
+                    <th>Product Name</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,8 @@
                         <td>{{shelf.id}}</td>
                         <td>{{shelf.count}}</td>
                         <td>{{shelf.capacity}}</td>
+                        <td>{{shelf.productId}}</td>
+                        <td>{{shelf.productName}}</td>
                         <td><img src="{{shelf.image}}" height="40px"/></td>
                     </tr>
                 }

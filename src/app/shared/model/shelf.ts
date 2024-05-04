@@ -4,5 +4,7 @@ export class Shelf {
         public capacity: number,
         public count: number,
         public image: string,
+        public productId: number,
+        public productName: string,
     ) {}
 }

@@ -14,7 +14,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ShelfCreateComponent {
   shelfCreateForm = this.fb.nonNullable.group({
     count: 1,
-    capacity: 500,     
+    capacity: 5,     
     });
     
 
@@ -37,7 +37,7 @@ export class ShelfCreateComponent {
   submit() {
     const count = this.shelfCreateForm.get('count')!.value;
     const capacity = this.shelfCreateForm.get('capacity')!.value;  
-    this.dialogRef.close({capacity, count});
+    this.dialogRef.close({count, capacity});
      }
     //  burda artik yaratma islemini yapiyoruz ne gonderiyoruz  adet  ve kapasiteyi gonderiyoruz sunucuya
     //  degiskenin degerini degistiremeyecegimiz icin const verdik
