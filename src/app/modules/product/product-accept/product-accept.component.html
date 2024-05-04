@@ -1,5 +1,5 @@
-<!-- <div class="container-fluid m-2">
-    <form [formGroup]="form" (submit)="submit()">
+<div class="container-fluid m-2">
+    <form [formGroup]="acceptForm" (submit)="submit()">
         <div class="row">
             <div class="col">
                 <div style="float:left">
@@ -8,23 +8,23 @@
                             Fruit: 
                         </div>
                         <div>
-                            <button class="form-select mt-2 mb-4" type="button" id="fruitSelectButton"
+                            <button class="form-select mt-2 mb-4" type="button" id="productSelectButton"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <div>
-                                    @if (selectedFruit == null) {
-                                        Select Fruit
+                                    @if (selectedProduct == null) {
+                                        Select Product
                                     } @else {
-                                        <img src="{{selectedFruit.image}}" height="20px"/>
-                                        {{ selectedFruit.name}}
+                                        <img src="{{selectedProduct.image}}" height="20px"/>
+                                        {{ selectedProduct.name}}
                                     }
                                 </div>
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="fruitSelectButton" id="fruits">
-                                @for (fruit of fruits; track fruit.id) {
+                            <ul class="dropdown-menu" aria-labelledby="productSelectButton" id="products">
+                                @for (product of products; track product.id) {
                                     <li>
-                                        <a class="dropdown-item" (click)="fruitSelect(fruit)">
-                                            <img src="{{ fruit.image }}" height="30px" width="30px" class="img-dropdown">
-                                            {{ fruit.name}}
+                                        <a class="dropdown-item" (click)="productSelect(product)">
+                                            <img src="{{ product.image }}" height="30px" width="30px" class="img-dropdown">
+                                            {{ product.name}}
                                         </a>
                                     </li>
                                 }
@@ -43,4 +43,4 @@
         </div>
         <button class="btn btn-primary" type="submit">Accept</button>
     </form>
-</div> -->
+</div>

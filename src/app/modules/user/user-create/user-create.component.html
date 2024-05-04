@@ -12,10 +12,10 @@
         <label for="txtEmail" class="form-label">Email Address</label>
         <input formControlName="email" type="email" class="form-control" id="txtEmail" aria-describedby="email">
       </div>
-    <div class="mb-3">
-      <label for="txtPassword" class="form-label">Password</label>
-      <input formControlName="password" type="password" class="form-control" id="password">
-    </div>
+      <div class="mb-3">
+        <label for="txtPassword" class="form-label">Password</label>
+        <input type="text" class="form-control" id="txtPassword" value="123456" disabled>
+      </div>
     <div>
         <select formControlName="roleId" class="form-select my-2" aria-label="Choose Role">
             <option selected value="0">Choose Role</option>
@@ -25,13 +25,7 @@
             </select>
             
     </div>
-    <fieldset disabled>
-    <div class="mb-3">
-        <label for="createdate" class="form-label">Registration Date</label>
-        <input formControlName="createdate" type="text" id="createdate" class="form-control" placeholder="Disabled input">
-      </div>
 
-    </fieldset>
 
     <button type="submit" class="btn btn-primary">Submit</button>
     <button class="btn btn-warning ms-2" [routerLink]="['..']">Geri</button>

@@ -14,6 +14,8 @@ import { Product } from '../../../shared/model/product';
 export class ProductAcceptComponent {
   products: Product[] = [];
   selectedProduct: Product | null = null;
+  //bu degiskeni tanimladi hem resmini hem ismini saklayabilsin diye 
+
   acceptForm=this.fb.nonNullable.group({
     count: 0,
   });
@@ -22,7 +24,6 @@ export class ProductAcceptComponent {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private productService: ProductService,
-    private loginService: LoginService,
     private fb: FormBuilder,
   ) {}
   ngOnInit(): void {
@@ -38,12 +39,15 @@ export class ProductAcceptComponent {
   productSelect(product: Product) {
     this.selectedProduct = product;
   }
+ // fruit isteyecegim fruit tipinde
+//fruiti alip degiskene aktariyor
+
   submit() {
     if (this.selectedProduct) {
       let count = this.acceptForm.get('count')!.value;
       this.productService.acceptProduct(this.selectedProduct.id, count).subscribe({
         next: (result) => {
-          this.toastr.info('Fruit accepted');
+          this.toastr.info('Product accepted');
           this.router.navigate(['/menu']);
         },
         error: (err)=> {
@@ -52,5 +56,15 @@ export class ProductAcceptComponent {
       });
     }
   }
+//   secili bir fruit varsa  null olup olmadigi kontrolunu if in icinde yaziyoruz
+// countu alacagim baska bir seye ihtiyacim yok
+// fruitserviceten accept isminde metot cagiracagim  fruitin id sini ve countu verecegiz
+
+// mesaji verip
+// menuye donuyoruz
+
+// hata alirsam ise
+// burda ozel hata mesaji verecegiz
+
   
 }
