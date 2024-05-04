@@ -15,7 +15,7 @@ import { environment } from '../environments/environments';
 import { urlInterceptor } from './core/interceptor/url.interceptor';
 import { APP_CONFIG } from './app.config';
 import { MenuComponent } from './core/component/menu/menu.component';
-import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [

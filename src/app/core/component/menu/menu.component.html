@@ -1,28 +1,57 @@
 <div class="w-100 vh-100">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand">Grocery</a>
+        <a class="navbar-brand">Menü</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="product" [class.active] = "url == '/menu/product'">Product Management</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="shelf" routerLinkActive="active">Shelf Management</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="user" routerLinkActive="active">User Management</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" routerLink="product/accept" routerLinkActive="active">Product Acceptance</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="product/sale" routerLinkActive="active">Product Sale</a>
-            </li>
+            <div class="hesap">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Product
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" [routerLink]="['/menu/product']" [class.active]="url == '/menu/product'">Product Management</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/product/create']" routerLinkActive="active">Product Create</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/product/accept']" routerLinkActive="active">Product Accept</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/product/sale']" routerLinkActive="active">Product Sale</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="hesap">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Shelf
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" [routerLink]="['/menu/shelf']" [class.active]="url == '/menu/shelf'">Shelf Management </a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/shelf/edit']" routerLinkActive="active">Shelf Edit</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/shelf/create']" routerLinkActive="active">Shelf Create</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/shelf/create']" routerLinkActive="active">Gerekirse</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="hesap">
+              <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    User
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" [routerLink]="['/menu/user']" [class.active]="url == '/menu/user'">User Management</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/user/create']" routerLinkActive="active">User Create</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/user/change-password']" routerLinkActive="active">User Password Change</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/user/edit']" routerLinkActive="active">Gerekirse</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </ul>
           <div class="hesap">
               <ul class="navbar-nav">
@@ -35,8 +64,7 @@
                     <li><a class="dropdown-item" (click)="logout()">Çıkış</a></li>
                   </ul>
                 </li>
-            </ul>
-  
+              </ul>
           </div>
         </div>
       </div>

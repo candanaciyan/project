@@ -7,7 +7,7 @@ import { UserManagementComponent } from './user-management/user-management.compo
 const routes: Routes = [
    { path: '', component: UserManagementComponent, pathMatch: 'full' },
     { path: 'create', component: UserCreateComponent },
-   { path: 'changePassword', component: UserPasswordChangeComponent },
+   { path: 'change-password', component: UserPasswordChangeComponent },
    
   ];
   

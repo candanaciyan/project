@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { SharedModule } from '../../shared/shared.module';
 import { ShelfCreateComponent } from './shelf-create/shelf-create.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { ShelfCreateComponent } from './shelf-create/shelf-create.component';
     CommonModule,
     ShelfRoutingModule,
     FormsModule,
-    
+  
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     
