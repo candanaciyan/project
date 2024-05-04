@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../../../core/service/login.service';
 import { UserService } from '../../../shared/service/user.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, ValidatorFn, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-password-change',
@@ -13,18 +13,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class UserPasswordChangeComponent {
 
   passwordForm = this.fb.nonNullable.group({
-    //buraya.nonNullable sonra group dersek o zaman burdaki
-    // degiskenlerin null gelme ihtimali kalmiyor.garanti etmis oluyoruz string donuyor		
     email: { value: this.loginService.email, disabled: true },
-    //emailin readonly olmasini saglayacagim degistirilemesin diye
-    //value sunu obje haline getiriyoruz blok isaretleri koyupvalue ya degeri verip virgul sonrasina ise baska ozellikler verebiliyoruz
-    //biz disabled true diyip form uzerinde bu alani otomatik disabled ettik
-       
-    //burayi loginservice degerinden aldigim email degiskenini aliyorum
     oldPassword: "",					
-    newPassword: ["", [ Validators.required, Validators.minLength(3), Validators.pattern(/admin/)] ],								
+    newPassword: ["", [ Validators.required, Validators.minLength(3),Validators.pattern(/admin/)] ],								
     passwordVerification: "",								
-    }, {validators: [/*sifreTekrariKontrolu*/]});								
+    }, {validators: [this.passwordValidationMatchValidator('newPassword', 'passwordVerification')]});								
     
 
   constructor(
@@ -42,11 +35,31 @@ export class UserPasswordChangeComponent {
       next: (result) => {
         console.log(result);
         this.toastr.info("Şifre değiştirilmiştir.");
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.error("Eski sifreyi hatali girdiniz. Lütfen tekrar deneyin.");
       }
     });
   }
+  passwordValidationMatchValidator(newPasswordControlName: string, passwordVerificationControlName: string): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+        const newPassword = control.get(newPasswordControlName);
+        const passwordVerification = control.get(passwordVerificationControlName);
 
+        // return null if controls haven't initialized yet
+        if (!newPassword || !passwordVerification) {
+            return null;
+        }
 
+        // return null if the controls match
+        if (newPassword.value === passwordVerification.value) {
+            return null;
+        }
 
+        // otherwise, return validation error
+        return { 'passwordMismatch': true };
+    };
+}
 
 }

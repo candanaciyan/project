@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../shared/service/user.service';
@@ -14,10 +14,9 @@ export class UserCreateComponent {
   createForm = this.fb.nonNullable.group({
     name: '',
     surname: '',
-    email: '',
+    email: ['',Validators.email],
     password: '',
     roleId: 0,
-    createdate: '',
   });
 
 
@@ -36,12 +35,14 @@ export class UserCreateComponent {
    let userId = this.loginService.userId;
    this.userService.createUser({ ...this.createForm.value, userId }).subscribe({
      next: (resp) => {
+      console.log(resp);
        this.toastr.success('User Created');
        this.router.navigate(['..'], { relativeTo: this.route });
+       
      },
      error: (err) => {
        console.log(err);
-       this.toastr.error("Error occured");
+       this.toastr.error("Bu email ile kayıtlı kullanıcı var. Lütfen tekrar deneyin. ");
      }
    });
   }

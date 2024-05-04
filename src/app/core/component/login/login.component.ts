@@ -12,12 +12,8 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginComponent {
   loginForm = this.fb.nonNullable.group({
     email: ['', Validators.email],
-//     burayi tirnak tirnaktan buna ceviriyoruz validasyon yapacagiz array yaziyoruz coklu secenek oldugu icin
-// patternla da yapabiliriz bunu
     password: '',
   });
-  //'' icinde bos olarak ta olabilir bu objeler gelen ekran bos gelsin istiyorsak bilgiler girilmemis halde yani
-  //veya email : ['', buraya da validasyon verebiliyorum yada baska bilgilerini verebiliyorum]
 
   constructor(
     private loginService: LoginService,
