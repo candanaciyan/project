@@ -13,6 +13,8 @@ import { AbstractControl, FormBuilder, ValidatorFn, Validators } from '@angular/
 export class UserPasswordChangeComponent {
 
   passwordForm = this.fb.nonNullable.group({
+    name: { value: this.loginService.name, disabled: true },
+    surname: { value: this.loginService.surname, disabled: true },
     email: { value: this.loginService.email, disabled: true },
     oldPassword: "",					
     newPassword: ["", [ Validators.required, Validators.minLength(3),Validators.pattern(/admin/)] ],								
@@ -46,17 +48,14 @@ export class UserPasswordChangeComponent {
     return (control: AbstractControl): {[key: string]: any} | null => {
         const newPassword = control.get(newPasswordControlName);
         const passwordVerification = control.get(passwordVerificationControlName);
-
         // return null if controls haven't initialized yet
         if (!newPassword || !passwordVerification) {
             return null;
         }
-
         // return null if the controls match
         if (newPassword.value === passwordVerification.value) {
             return null;
         }
-
         // otherwise, return validation error
         return { 'passwordMismatch': true };
     };

@@ -6,6 +6,8 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
+  name= "";
+  surname= "";
   email = "";
   password = "";
   //responsetan gelen token bilgisini hem localstorage e hem de loginservice classinin token degiskenine yaziyorum
@@ -56,6 +58,8 @@ export class LoginService {
     localStorage.setItem('email', email);
     localStorage.setItem('password', password);
     let payload = this.parseJwt(this.token);
+    this.name = payload.name;
+    this.surname = payload.surname;
     this.role = payload.role;//bunun icine de ekledik login response icine tokendan geleni degiskeinin icine saklamis olduk
     this.userId = payload.userId;//bunun icine de ekledik login response icine tokendan geleni degiskeinin icine saklamis olduk
     return data;//bu gerekli mi return olmasi digerinde yok
