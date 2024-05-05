@@ -51,7 +51,7 @@ export class ProductAcceptComponent {
           this.router.navigate(['/menu']);
         },
         error: (err)=> {
-          this.toastr.error(err.error.mesaj);
+          this.toastr.error("Not Enough Shelf");
         }
       });
     }

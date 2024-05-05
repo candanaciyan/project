@@ -18,7 +18,7 @@ export function roleControlGuard(role: string): CanActivateFn {
     
 
     if (!result) {
-      router.navigate(['./menu/home']);
+      router.navigate(['./menu']);
       toastr.error(
         'Bu sayfaya girmeye yetkiniz bulunmamaktadır.',
         'Access Denied !!',

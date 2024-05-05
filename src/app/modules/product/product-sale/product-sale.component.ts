@@ -51,7 +51,13 @@ submit() {
     let count = this.saleform.get('count')!.value;
     this.productService.saleProduct(this.selectedProduct.id, count).subscribe({
       next: (result) => {
-        this.toastr.info('Product sold');
+        if(result.message == "") {
+          this.toastr.info('Product sold');
+          
+        }
+        else{
+          this.toastr.info(result.message);
+        }
         this.router.navigate(['/menu']);
       },
       error: (err)=> {

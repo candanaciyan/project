@@ -89,6 +89,11 @@ export class LoginService {
     }
     return hasRole;
   }
+
+  getRole(): string {
+    return this.role;
+  }
+  
   // geriye boolean donecek
   // hasrole diye bir degiskenimiz olsun ve ilk degeri flase olsun
   // roller uzerinden foreach yaziyoruz her bir  rolu aliyorum arrow fonk ile

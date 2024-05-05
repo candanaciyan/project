@@ -18,13 +18,7 @@ export class MenuComponent implements OnInit {
     private toastr: ToastrService,
   ) {}
    ngOnInit(): void {
-    //  this.router.events.subscribe({
-    //  next: (event) => {
-    // if (event instanceof NavigationEnd) {
-    //  this.url = event.url;
-    //  }
-    // }
-    // });
+    this.role = this.loginService.getRole();
     }
     
 
