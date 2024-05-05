@@ -3,7 +3,7 @@
     @if (shelves.length == 0) {
         It seems there are no boxes...
     } @else {
-        <table class="table table-hover boxTable">
+        <input type="text" [(ngModel)]="filterText" (input)="filterShelves()" placeholder="Enter product name to filter">        <table class="table table-hover boxTable">
             <thead>
                 <tr>
                     <th>Shelf Id</th>
@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                @for (shelf of shelves; track shelf.id) {
+                @for (shelf of filteredShelves; track shelf.id) {
                     <tr [class.table-primary]="shelf.id == selectedShelf?.id"
                     class="shelfRow"
                     (click)="selectShelf(shelf)">
@@ -28,6 +28,7 @@
                 }
             </tbody>
         </table>
+   
     }
     </div>
     <div class="mt-2">

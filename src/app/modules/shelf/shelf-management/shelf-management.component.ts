@@ -21,6 +21,8 @@ import { ShelfCreateComponent } from '../shelf-create/shelf-create.component';
 export class ShelfManagementComponent implements OnInit {
   shelves: Shelf[]  = [];
   selectedShelf: Shelf | null = null;
+  filteredShelves: Shelf[]  = [];
+  filterText: string = '';
 
 
 
@@ -35,6 +37,7 @@ export class ShelfManagementComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.refreshShelves();
+    
   }
   //boyle de cagirmis olduk
 
@@ -43,6 +46,8 @@ export class ShelfManagementComponent implements OnInit {
     this.shelfService.getAllShelves().subscribe({
       next: (data) => {
         this.shelves = data;
+        
+    this.filteredShelves =data;
       }
     });
   }
@@ -67,6 +72,10 @@ export class ShelfManagementComponent implements OnInit {
       }
     });
   }
+
+
+
+
   selectShelf(shelf: Shelf) {
     if (shelf == this.selectedShelf) {
       this.selectedShelf = null;
@@ -137,5 +146,16 @@ export class ShelfManagementComponent implements OnInit {
 // 		cevap dondugunde data olarak alip 				
 // 		ekrani guncellemek icin bunu cagirdik				
 
+filterShelves() {
+  if (!this.shelves || !this.filterText) {
+    this.filteredShelves = this.shelves; // Eğer shelves null ise, filtreleme yapmadan tüm rafları göster
+    return;
+  }
+
+  const searchText = this.filterText.toLowerCase();
+  this.filteredShelves = this.shelves.filter(shelf =>
+    shelf.productName && shelf.productName.toLowerCase().includes(searchText)
+  );
+}
 
 }
