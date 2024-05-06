@@ -24,7 +24,6 @@ export class ShelfCreateComponent {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private shelfService: ShelfService,
-    private loginService: LoginService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<ShelfCreateComponent>,
     
