@@ -42,16 +42,19 @@
             </div>
             <div class="hesap">
               <ul class="navbar-nav">
+                @if(role =='admin'){
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     User
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" [routerLink]="['/menu/user']" [class.active]="url == '/menu/user'">User Management</a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/menu/user/create']" routerLinkActive="active">User Create</a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/menu/user/changepassword']" routerLinkActive="active">User Password Change</a></li>
+                  <ul class="dropdown-menu dropdown-menu-end">                   
+                      <li><a class="dropdown-item" [routerLink]="['/menu/user']" [class.active]="url == '/menu/user'">User Management</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/menu/user/create']" routerLinkActive="active">User Create</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/menu/user/changepassword']" routerLinkActive="active">User Password Change</a></li>
+                                     
                   </ul>
                 </li>
+              }   
               </ul>
             </div>
           </ul>
