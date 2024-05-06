@@ -9,8 +9,7 @@ export class LoginService {
   name= "";
   surname= "";
   email = "";
-  password = "";
-  //responsetan gelen token bilgisini hem localstorage e hem de loginservice classinin token degiskenine yaziyorum
+  password = "";  
   loggedIn = false;
   token = "";
   userId = "";
@@ -46,10 +45,6 @@ export class LoginService {
   //datayi degistirmiyorum birebir geldigi haliyle geri gonderiyorum ama bilgileri sakliyorum bu arada
 
   parseLoginResponse(data: any, email: string, password: string) {
-//     login oldugunda calisacak bir fonksiyon olacak bu
-// parametreye email password e eklemek gerekli zorunlu kildi
-// hata vdonmezse calisacak fonk bu
-
     this.loggedIn = true;
     this.token = data.token;
     this.email = email;
@@ -60,9 +55,9 @@ export class LoginService {
     let payload = this.parseJwt(this.token);
     this.name = payload.name;
     this.surname = payload.surname;
-    this.role = payload.role;//bunun icine de ekledik login response icine tokendan geleni degiskeinin icine saklamis olduk
-    this.userId = payload.userId;//bunun icine de ekledik login response icine tokendan geleni degiskeinin icine saklamis olduk
-    return data;//bu gerekli mi return olmasi digerinde yok
+    this.role = payload.role;
+    this.userId = payload.userId;
+    return data;
   }
   logout() {
     this.loggedIn = false;
@@ -98,12 +93,4 @@ export class LoginService {
     return this.role;
   }
   
-  // geriye boolean donecek
-  // hasrole diye bir degiskenimiz olsun ve ilk degeri flase olsun
-  // roller uzerinden foreach yaziyoruz her bir  rolu aliyorum arrow fonk ile
-  // if rol uc esit roleAdi ise ===
-  // if dogru olursa hasrole true ya donsun demis olduk
-  
-
-
 }

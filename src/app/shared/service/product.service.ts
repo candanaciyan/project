@@ -14,8 +14,6 @@ export class ProductService {
     private http: HttpClient,
   ) { }
 
-
-
   getAllProducts():Observable<Product[]> {
     return this.http.get<Product[]>('/product/all');
   }
