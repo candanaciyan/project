@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { ShelfService } from '../../../shared/service/shelf.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-shelf-create',
@@ -25,18 +25,18 @@ export class ShelfCreateComponent {
     private toastr: ToastrService,
     private shelfService: ShelfService,
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<ShelfCreateComponent>,
+    private dialog: MatDialog,
     
   ) {}
 
   close() {
-     this.dialogRef.close();
+    
   }
     
   submit() {
     const count = this.shelfCreateForm.get('count')!.value;
     const capacity = this.shelfCreateForm.get('capacity')!.value;  
-    this.dialogRef.close({count, capacity});
+    this.dialog.closeAll();
      }
     //  burda artik yaratma islemini yapiyoruz ne gonderiyoruz  adet  ve kapasiteyi gonderiyoruz sunucuya
     //  degiskenin degerini degistiremeyecegimiz icin const verdik
@@ -44,6 +44,27 @@ export class ShelfCreateComponent {
     //  bu obje ile close ediyorum
     //  simdi bunu cagirdigim yere gidecegim bunu alacagim ve cap ve countu okuyup 
      
+    createShelf() {
+      let dialog =  this.dialog.open(ShelfCreateComponent, {
+        width: '500px',
+        enterAnimationDuration: '250ms',
+        exitAnimationDuration: '250ms',
+        disableClose: true,
+      });
+      dialog.afterClosed().subscribe({
+        next: (data) => {
+          if (data) {
+            // box creating...data geliyorsa box kayit edecegiz
+            this.shelfService.createShelf(data.capacity, data.count).subscribe({
+              next: (res) => {
+                this.toastr.info(res.message + ' shelves created');
+     
+              }
+            });
+          }
+        }
+      });
+    }
 
 
 

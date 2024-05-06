@@ -53,29 +53,6 @@ export class ShelfManagementComponent implements OnInit {
       }
     });
   }
-  createShelf() {
-    let dialog =  this.dialog.open(ShelfCreateComponent, {
-      width: '500px',
-      enterAnimationDuration: '250ms',
-      exitAnimationDuration: '250ms',
-      disableClose: true,
-    });
-    dialog.afterClosed().subscribe({
-      next: (data) => {
-        if (data) {
-          // box creating...data geliyorsa box kayit edecegiz
-          this.shelfService.createShelf(data.capacity, data.count).subscribe({
-            next: (res) => {
-              this.toastr.info(res.message + ' shelves created');
-              this.refreshShelves();
-            }
-          });
-        }
-      }
-    });
-  }
-
-
 
 
   selectShelf(shelf: Shelf) {
