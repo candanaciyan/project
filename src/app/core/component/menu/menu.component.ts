@@ -19,8 +19,7 @@ export class MenuComponent implements OnInit {
   ) {}
    ngOnInit(): void {
     this.role = this.loginService.getRole();
-    }
-    
+    }    
 
 
   logout() {

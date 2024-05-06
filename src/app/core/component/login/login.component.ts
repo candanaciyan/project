@@ -29,7 +29,6 @@ export class LoginComponent {
     //deger okuma
     let email = this.loginForm.get('email')!.value;
     let password = this.loginForm.get('password')!.value;
-
     this.loginService.login(email,password).subscribe({
 
 //loginserviceten login cagirip buna email ve passwordu veriyorum bunlar 
@@ -43,12 +42,12 @@ export class LoginComponent {
 // next donen degeri parametre olarak alabiliyor
 
 next: () => {
-        this.toastr.success('Logged in');
+        this.toastr.success('Login Successful');
         this.router.navigate(['/menu']);
-        //
+        
       },
       error: (err) => {
-        this.toastr.error('Error occured');
+        this.toastr.error('Login Failed');
         this.loginForm.patchValue({ password: '' });
         console.log(err);
       }
