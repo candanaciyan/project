@@ -3,7 +3,8 @@
     @if (shelves.length == 0) {
         It seems there are no boxes...
     } @else {
-        <input type="text" [(ngModel)]="filterText" (input)="filterShelves()" placeholder="Enter product name to filter">        <table class="table table-hover boxTable">
+        <input type="text" [(ngModel)]="filterText" (input)="filterShelves()" placeholder="Enter product name to filter">        
+        <table class="table table-hover boxTable">
             <thead>
                 <tr>
                     <th>Shelf Id</th>
@@ -11,6 +12,9 @@
                     <th>Shelf Capacity</th>
                     <th>Product Id</th>
                     <th>Product Name</th>
+                    @if (role == "admin"){
+                        <th>Actions</th>
+                    } 
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +27,19 @@
                         <td>{{shelf.capacity}}</td>
                         <td>{{shelf.productId}}</td>
                         <td>{{shelf.productName}}</td>
-                        <td><img src="{{shelf.image}}" height="40px"/></td>
+                        <td> 
+                            @if (role == "admin" && selectedShelf != null) { 
+                                <button class="btn btn-sm btn-warning" (click)="editShelf()">
+                                    <span class="d-none d-md-inline">Edit</span>
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger ms-2" (click)="deleteShelf()">
+                                    <span class="d-none d-md-inline">Delete</span>
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                                
+                            }
+                        </td>
                     </tr>
                 }
             </tbody>
@@ -31,11 +47,5 @@
    
     }
     </div>
-    <div class="mt-2">
-        <button class="btn btn-primary" (click)="createShelf()">Create Shelf</button>
-        @if (selectedShelf != null) {
-            <button class="btn btn-warning ms-2" (click)="editShelf()">Edit Shelf</button>
-            <button class="btn btn-danger ms-2" (click)="deleteShelf()">Delete Shelf</button>
-        }
-    </div>
+
 </div>

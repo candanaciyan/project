@@ -9,27 +9,26 @@
                     <th>User Name</th>
                     <th>User Surname</th>
                     <th>User Email</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @for (user of users; track user.email) {
-                    <tr [class.table-primary]="user.id == selectedUser?.id"
-                    class="shelfRow"
-                    (click)="selectUser(user)">
-                        <td>{{user.name}}</td>
-                        <td>{{user.surname}}</td>
-                        <td>{{user.email}}</td>
-                        </tr>
+                <tr [class.table-primary]="user.id == selectedUser?.id" class="shelfRow" (click)="selectUser(user)">
+                    <td>{{user.name}}</td>
+                    <td>{{user.surname}}</td>
+                    <td>{{user.email}}</td>
+                    <div>
+                    <td>
+                        <button class="btn btn-warning btn-sm ms-2" (click)="editUser()">Edit</button>
+                        <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser()">Delete</button>
+                    </td>
+                </div>
+                </tr>
                 }
             </tbody>
         </table>
+        
     }
-    </div>
-    <div class="mt-2">
-        <button class="btn btn-primary" (click)="createUser()">Create User</button>
-        @if (selectedUser != null) {
-            <button class="btn btn-warning ms-2" (click)="editUser()">Edit User</button>
-            <button class="btn btn-danger ms-2" (click)="deleteUser()">Delete User</button>
-        }
     </div>
 </div>

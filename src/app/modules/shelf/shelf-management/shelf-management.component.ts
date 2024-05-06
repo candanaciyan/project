@@ -23,6 +23,7 @@ export class ShelfManagementComponent implements OnInit {
   selectedShelf: Shelf | null = null;
   filteredShelves: Shelf[]  = [];
   filterText: string = '';
+  role = '';
 
 
 
@@ -37,6 +38,7 @@ export class ShelfManagementComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.refreshShelves();
+    this.role = this.loginService.getRole();
     
   }
   //boyle de cagirmis olduk
