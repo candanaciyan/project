@@ -17,7 +17,7 @@ export class UserPasswordChangeComponent {
     surname: { value: this.loginService.surname, disabled: true },
     email: { value: this.loginService.email, disabled: true },
     oldPassword: "",					
-    newPassword: ["", [ Validators.required, Validators.minLength(3),Validators.pattern(/admin/)] ],								
+    newPassword: ["", [ Validators.required, Validators.minLength(3),Validators.pattern(/^(?=.*[0-9])/)] ],								
     passwordVerification: "",								
     }, {validators: [this.passwordValidationMatchValidator('newPassword', 'passwordVerification')]});								
     
@@ -36,11 +36,11 @@ export class UserPasswordChangeComponent {
     this.userService.changePassword({oldPassword, newPassword }).subscribe({
       next: (result) => {
         console.log(result);
-        this.toastr.info("Şifre değiştirilmiştir.");
+        this.toastr.info("Password Changed.");
       },
       error: (err) => {
         console.log(err);
-        this.toastr.error("Eski sifreyi hatali girdiniz. Lütfen tekrar deneyin.");
+        this.toastr.error("The old password is incorrect, try again.");
       }
     });
   }
