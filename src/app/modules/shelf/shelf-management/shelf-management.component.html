@@ -13,7 +13,7 @@
                     <th>Shelf Capacity</th>
                     <th>Difference</th>
                     <th>Product Id</th>
-                    <th>Product Name</th>
+                    <th>Product Name</th>                 
                     @if (role == "admin" && selectedShelf != null){
                         <th>Actions</th>
                     } 
@@ -29,7 +29,7 @@
                         <td>{{shelf.capacity}}</td>
                         <td>{{ calculateDifference(shelf) }}</td>
                         <td>{{shelf.productId}}</td>
-                        <td>{{shelf.productName}}</td>
+                        <td>{{shelf.productName}}</td>                    
                         <td> 
                             @if (role == "admin" && selectedShelf != null && shelf.id == selectedShelf.id) { 
                                 <button class="btn btn-sm btn-warning" (click)="editShelf()">

@@ -5,6 +5,7 @@ import { Product} from '../../model/product';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogueComponent } from '../main-dialogue/main-dialogue.component';
 import { LoginService } from '../../../core/service/login.service';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-product-card',
@@ -12,6 +13,8 @@ import { LoginService } from '../../../core/service/login.service';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent implements OnInit {
+  products: Product[] = [];
+  selectedProduct: Product | null = null;
   totalAmount = 0;
   role = '';
   //disardan gonderilen parametreleri almasi icin buraya iki tane degisken tanimliyorum
@@ -27,10 +30,12 @@ export class ProductCardComponent implements OnInit {
     private toastr: ToastrService,
     private dialog: MatDialog,
     private loginService: LoginService,
+    private productService: ProductService,
   ) {}
 
   ngOnInit(): void {
     this.role = this.loginService.getRole();
+    this.refreshProducts();
     
   }
 
@@ -71,7 +76,19 @@ editProduct() {
 }
 //bu event olusturuyor ve bunun mesajini gonderiyor output dedigimiz icin bu componenti kullanan dis componente
 
-
-
+productSelect(product: Product) {
+  this.productService.getProductCount(product.id).subscribe({
+    next: (data:any) => {
+      this.totalAmount = data.count;
+    }
+  });
+}
+refreshProducts() {
+  this.productService.getAllProducts().subscribe({
+    next: (result) => {
+      this.products = result;
+    }
+  });
+}
 
 }

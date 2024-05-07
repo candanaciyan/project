@@ -25,7 +25,6 @@ export class ProductSaleComponent implements OnInit {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private productService: ProductService,
-    private loginService: LoginService,
     private fb: FormBuilder,
   ) { }
   ngOnInit(): void {
