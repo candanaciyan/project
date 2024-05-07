@@ -10,3 +10,17 @@
     display: inline-block; /* Simgeyi görünür hale getir */
     /* İsteğe bağlı: Simge boyutunu ve diğer özelliklerini ayarlayın */
 }
+
+.container-fluid {
+    margin: auto; /* Sayfada ortalamak için */
+    max-width: 800px; /* İsteğe bağlı olarak maksimum genişlik belirlenebilir */
+  }
+  
+  .boxTable {
+    border-radius: 10px; /* Tablo kenarlarını yuvarlatmak için */
+  }
+  
+  .shelfRow:hover {
+    background-color: #f0f0f0; /* Satır üzerine gelindiğinde arka plan rengini değiştirme */
+  }
+  

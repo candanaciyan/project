@@ -1,0 +1,11 @@
+.sayfa {
+    margin: auto; /* Sayfada ortalamak için */
+    max-width: 400px; /* İsteğe bağlı olarak maksimum genişlik belirlenebilir */
+  }
+  
+  .sayfa form {
+    background-color: #ffffff; /* Formun arka plan rengi */
+    padding: 20px; /* Form içeriğinden boşluk bırakmak için */
+    border-radius: 10px; /* Kenarları yuvarlatmak için */
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Hafif bir gölge eklemek için */
+  }
