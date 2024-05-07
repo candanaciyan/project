@@ -18,7 +18,7 @@ export class ProductCardComponent implements OnInit {
   totalAmount = 0;
   role = '';
   //disardan gonderilen parametreleri almasi icin buraya iki tane degisken tanimliyorum
-  @Input() product: Product = new Product(0,'',0,'','');
+  @Input() product: Product = new Product(0,'',0,'','',0);
   //yazilimIlan.ts interface ini classa cevirdi. new diyerek instance da yaratmak istedigimiz icin null olmamasi icin
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
@@ -40,23 +40,27 @@ export class ProductCardComponent implements OnInit {
   }
 
   deleteProductButtonClicked() {
-    let dialog =  this.dialog.open(MainDialogueComponent, {
-//       acmak istedigim comp adini giriyorum open icine 
-// mesaj kutusu buyuklugu burda ayarlaniyor
 
-      width: '300px',
-      enterAnimationDuration: '250ms',
-      exitAnimationDuration: '250ms',
-    });
-    dialog.afterClosed().subscribe({
-      next: (data) => {
-        if (data?.result === 'yes') {
-          this.deleteProduct();
-        }
-      }
-    });
-    dialog.componentInstance.called = 'Are you sure for delete this product?';
+    let dialog =  this.dialog.open(MainDialogueComponent, {
+      //       acmak istedigim comp adini giriyorum open icine 
+      // mesaj kutusu buyuklugu burda ayarlaniyor
+      
+            width: '300px',
+            enterAnimationDuration: '250ms',
+            exitAnimationDuration: '250ms',
+          });
+          dialog.afterClosed().subscribe({
+            next: (data) => {
+              if (data?.result === 'yes') {
+                this.deleteProduct();
+              }
+            }
+          });
+          dialog.componentInstance.called = 'Are you sure for delete this product?';
   }
+
+  
+
   // bu obsv subs metoduyla close yapildiginda su fonksiyon cagrilsin diyebiliyoruz
   // next icinde datayi aliyoruz 
   // data varsa ve result ozelligi yes ise  dedik.data? Yaparak pencere disina tiklandiginda null gelme hatasini onlemis olacak
@@ -69,7 +73,14 @@ export class ProductCardComponent implements OnInit {
 
 //simdi bu metodu tanimlayacagiz kart comp ts icine
 deleteProduct() {
-  this.delete.emit(this.product);
+  if(this.product.totalAmount > 0) {
+
+    this.toastr.info('Product can not be deleted, because it is in use');
+
+  }else{
+    this.delete.emit(this.product);
+  }
+    
 }
 editProduct() {
   this.edit.emit(this.product);

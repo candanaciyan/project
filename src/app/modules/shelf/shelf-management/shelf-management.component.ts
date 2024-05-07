@@ -92,12 +92,7 @@ export class ShelfManagementComponent implements OnInit {
       });
     }
   }
-//   burda da silme islemini hakikaten yapacak						
-// bu if in icersinde olursa compiler buranin null gelmeyeceginden emin oluyor ve soru isareti gerekmiyor bi alt satirdaki selectbox a						
-// null degilse demis olduk yani						
-// 			selected box in idsini verdik			
-						
-// 		cevap dondugunde data olarak alip 				
+			// 		cevap dondugunde data olarak alip 				
 // 		ekrani guncellemek icin bunu cagirdik				
 
 filterShelves() {

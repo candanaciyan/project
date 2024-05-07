@@ -21,6 +21,12 @@ export class ProductService {
     return this.http.post<SuccessResponse>('/product/create', product);
   }
 
+  updateProduct(product: Product): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>('/product/update', product);
+  }
+
+
+
   deleteProduct(id: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/product/delete', { id } );
   }

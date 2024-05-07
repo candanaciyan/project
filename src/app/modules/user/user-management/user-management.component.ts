@@ -80,14 +80,14 @@ selectUser(user: User) {
 
 
 
-//  deleteUser(user: User) {
-//   this.userService.deleteUser(user.email).subscribe({
-//    next: (data) => {
-//      this.toastr.info('User Deleted');
-//     this.refreshUsers();
-//      }
-//   });
-// }
+  deletenaUser(user: User) {
+ this.userService.deleteUser(user.email).subscribe({
+ next: (data) => {
+  this.toastr.info('User Deleted');
+  this.refreshUsers();
+    }
+ });
+ }
 
 deleteUser() {
   let dialog =  this.dialog.open(MainDialogueComponent, {

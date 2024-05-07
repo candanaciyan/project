@@ -40,7 +40,7 @@ export class ProductCreateComponent implements OnInit {
     let minimum = this.productForm.get('minimum')!.value;
     let description = this.productForm.get('description')!.value;
     let image = this.productForm.get('image')!.value;
-    this.productService.createProduct(new Product(this.productId, name,minimum, description, image)).subscribe({
+    this.productService.createProduct(new Product(this.productId, name,minimum, description, image,0)).subscribe({
 
       next: (resp) => {
         this.toastr.success('Product created.');
