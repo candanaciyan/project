@@ -1,16 +1,18 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product} from '../../model/product';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogueComponent } from '../main-dialogue/main-dialogue.component';
+import { LoginService } from '../../../core/service/login.service';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit {
+  role = '';
   //disardan gonderilen parametreleri almasi icin buraya iki tane degisken tanimliyorum
   @Input() product: Product = new Product(0,'',0,'','');
   //yazilimIlan.ts interface ini classa cevirdi. new diyerek instance da yaratmak istedigimiz icin null olmamasi icin
@@ -23,8 +25,13 @@ export class ProductCardComponent {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private dialog: MatDialog,
+    private loginService: LoginService,
   ) {}
 
+  ngOnInit(): void {
+    this.role = this.loginService.getRole();
+    
+  }
 
   deleteProductButtonClicked() {
     let dialog =  this.dialog.open(MainDialogueComponent, {

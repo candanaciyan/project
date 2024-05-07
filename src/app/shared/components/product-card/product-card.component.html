@@ -15,12 +15,15 @@
                     <div class="d-flex">
                         <div>Description:</div>
                         <div class="ms-2">{{product.description}}</div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
-            <div>
-                <mat-icon class="edit me-1" fontIcon="edit" (click)="editProduct()"></mat-icon>
-                <mat-icon class="close" fontIcon="close" (click)="deleteProductButtonClicked()"></mat-icon>
+            <div> 
+                @if (role == "admin"){
+                    <mat-icon class="edit me-1" fontIcon="edit" (click)="editProduct()"></mat-icon>
+                    <mat-icon class="close" fontIcon="close" (click)="deleteProductButtonClicked()"></mat-icon>
+                }         
+
             </div>
         </div>
     </div>
