@@ -23,7 +23,7 @@ export class UserService {
   }
 
   deleteUser(email: string): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/user/delete', { email } );
+    return this.http.post<SuccessResponse>('/user/delete',  email );
   }
   updateUser(email: string): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/user/update', {email});

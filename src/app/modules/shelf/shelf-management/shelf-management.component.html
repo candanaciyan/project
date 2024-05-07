@@ -32,10 +32,7 @@
                         <td>{{shelf.productName}}</td>                    
                         <td> 
                             @if (role == "admin" && selectedShelf != null && shelf.id == selectedShelf.id) { 
-                                <button class="btn btn-sm btn-warning" (click)="editShelf()">
-                                    <span class="d-none d-md-inline">Edit</span>
-                                    <i class="fas fa-edit"></i>
-                                </button>
+    
                                 <button class="btn btn-sm btn-danger ms-2" (click)="deleteShelf()">
                                     <span class="d-none d-md-inline">Delete</span>
                                     <i class="fas fa-trash-alt"></i>

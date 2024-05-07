@@ -34,8 +34,5 @@ export class ShelfService {
   deleteShelf(id: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/shelf/delete', {id});
   }
-  updateShelf(id: number, capacity: number): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/shelf/update', {id, capacity});
-  }
 
 }

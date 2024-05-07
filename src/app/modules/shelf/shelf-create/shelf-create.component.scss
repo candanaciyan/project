@@ -32,4 +32,12 @@
     background-color: #5a6268; /* Butonun üzerine gelindiğinde rengi değiştirme */
     border-color: #5a6268;
   }
+  .container-fluid {
+    background-color: #2e456e; /* Arka plan rengini buradan ayarlayabilirsiniz */
+  }
   
+  .container-fluid form label,
+  .container-fluid form input[type="number"],
+  .container-fluid form button {
+    color: white; /* Yazı rengini beyaz yap */
+  }

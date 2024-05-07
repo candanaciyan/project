@@ -62,32 +62,7 @@ export class ShelfManagementComponent implements OnInit {
       this.selectedShelf = shelf;
     }
   }
-  editShelf() {
-    let dialog =  this.dialog.open(ShelfEditComponent, {
-      width: '300px',
-      enterAnimationDuration: '250ms',
-      exitAnimationDuration: '250ms',
-    });
-    dialog.afterClosed().subscribe({
-      next: (data) => {
-        if (data) {
-          this.shelfService.updateShelf(this.selectedShelf!.id, data.capacity).subscribe({
-            next: (data) => {
-              this.toastr.info('Shelf updated');
-              this.refreshShelves();
-//               selectedbox icinden  idyi  e   aldik
-// kapanan ekrandan da capasity I aldik
-// ve son olarak refresh yaptik
 
-            },
-            error: (err) => {
-              this.toastr.error(err.error.mesaj);
-            }
-          });
-        }
-      }
-    });
-  }
   deleteShelf() {
     let dialog =  this.dialog.open(MainDialogueComponent, {
       width: '300px',
