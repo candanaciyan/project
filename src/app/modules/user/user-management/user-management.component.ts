@@ -55,23 +55,21 @@ export class UserManagementComponent implements OnInit {
     dialog.afterClosed().subscribe({
       next: (data) => {
         if (data) {
-          this.userService.updateUser(this.selectedUser!.email).subscribe({
-            next: (data) => {
-              this.toastr.info('User updated');
+          this.userService.changePasswordAdmin(this.selectedUser!.email).subscribe({
+            next: (result) => {
+              console.log(result);
+              this.toastr.success("Password changed successfully.");
               this.refreshUsers();
-  //               selectedbox icinden  idyi  e   aldik
-  // kapanan ekrandan da capasity I aldik
-  // ve son olarak refresh yaptik
-  
             },
             error: (err) => {
-              this.toastr.error(err.error.mesaj);
+              console.log(err);
+              this.toastr.error("Password change failed.");
             }
           });
-        }
+        }}})
       }
-    });
-  }
+
+
 selectUser(user: User) {
   if (user == this.selectedUser) {
     this.selectedUser = null;
@@ -80,23 +78,7 @@ selectUser(user: User) {
   }
 }
 
-changeUserPassword(email: string) {
-  if (!email) {
-    this.toastr.error("Please select a user.");
-    return;
-  }
 
-  this.userService.changePasswordAdmin(email).subscribe({
-    next: (result) => {
-      console.log(result);
-      this.toastr.success("Password changed successfully.");
-    },
-    error: (err) => {
-      console.log(err);
-      this.toastr.error("Password change failed.");
-    }
-  });
-}
 
 //  deleteUser(user: User) {
 //   this.userService.deleteUser(user.email).subscribe({

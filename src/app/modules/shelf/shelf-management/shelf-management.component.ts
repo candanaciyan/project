@@ -137,4 +137,9 @@ filterShelves() {
   );
 }
 
+
+calculateDifference(shelf: Shelf): number {
+  return shelf.capacity - shelf.count;
+}
+
 }

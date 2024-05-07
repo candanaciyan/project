@@ -21,7 +21,6 @@ export class UserPasswordChangeComponent {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private userService: UserService,
-    private loginService: LoginService,
     private fb: FormBuilder,
   ) {
     this.passwordForm = this.fb.group({

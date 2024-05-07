@@ -36,7 +36,7 @@ export class UserService {
 
 
  
-  public changePasswordAdmin(email: string): Observable<SuccessResponse> {
+  public changePasswordAdmin(email: string ): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>("/user/passwordadmin", { email });
   }
   //post ile olacak donus tipi de sunucu tarafinda tanimladigimiz default donus tipi var

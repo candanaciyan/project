@@ -17,6 +17,8 @@ export class MenuComponent implements OnInit {
     public route: ActivatedRoute,
     private toastr: ToastrService,
   ) {}
+
+ 
    ngOnInit(): void {
     this.role = this.loginService.getRole();
     }    
