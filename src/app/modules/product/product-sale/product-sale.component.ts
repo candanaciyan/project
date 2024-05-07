@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../../shared/service/product.service';
@@ -11,7 +11,7 @@ import { Product } from '../../../shared/model/product';
   templateUrl: './product-sale.component.html',
   styleUrl: './product-sale.component.scss'
 })
-export class ProductSaleComponent {
+export class ProductSaleComponent implements OnInit {
   products: Product[] = [];
   selectedProduct: Product | null = null;
   totalAmount = 0;

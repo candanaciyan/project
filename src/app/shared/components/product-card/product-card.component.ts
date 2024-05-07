@@ -12,6 +12,7 @@ import { LoginService } from '../../../core/service/login.service';
   styleUrl: './product-card.component.scss'
 })
 export class ProductCardComponent implements OnInit {
+  totalAmount = 0;
   role = '';
   //disardan gonderilen parametreleri almasi icin buraya iki tane degisken tanimliyorum
   @Input() product: Product = new Product(0,'',0,'','');
@@ -69,5 +70,8 @@ editProduct() {
   this.edit.emit(this.product);
 }
 //bu event olusturuyor ve bunun mesajini gonderiyor output dedigimiz icin bu componenti kullanan dis componente
+
+
+
 
 }

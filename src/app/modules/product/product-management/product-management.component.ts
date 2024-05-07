@@ -34,7 +34,7 @@ export class ProductManagementComponent implements OnInit {
   }
 
   cardSelected(message: string) {
-    console.log('Kart secildi: ' + message);
+    console.log('Card Selected: ' + message);
   }
 
   userHasRole(roleName: string): boolean {
