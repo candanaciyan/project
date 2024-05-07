@@ -1,0 +1,12 @@
+.btn-sm {
+    padding: 0.25rem 0.5rem; /* İsteğe bağlı: Buton boyutunu belirleyin */
+}
+
+.btn-sm .btn-text {
+    display: none; /* Buton içindeki metni gizle */
+}
+
+.btn-sm .btn-icon {
+    display: inline-block; /* Simgeyi görünür hale getir */
+    /* İsteğe bağlı: Simge boyutunu ve diğer özelliklerini ayarlayın */
+}

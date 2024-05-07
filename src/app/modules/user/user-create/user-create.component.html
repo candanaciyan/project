@@ -1,34 +1,32 @@
-<div>
-    <form [formGroup]="createForm" (ngSubmit)="submit()">
-    <div class="mb-3">
-      <label for="txtName" class="form-label">Name</label>
-      <input formControlName="name" type="text" class="form-control" id="txtName" aria-describedby="name">
-    </div>
-    <div class="mb-3">
-        <label for="txtSurname" class="form-label">Surname</label>
-        <input formControlName="surname" type="text" class="form-control" id="txtSurname" aria-describedby="surname">
+<div class="custom-form">
+  <form [formGroup]="createForm" (ngSubmit)="submit()" class="needs-validation" novalidate>
+      <div class="mb-3">
+          <label for="txtName" class="form-label">Name</label>
+          <input formControlName="name" type="text" class="form-control" id="txtName" aria-describedby="name">
       </div>
       <div class="mb-3">
-        <label for="txtEmail" class="form-label">Email Address</label>
-        <input formControlName="email" type="email" class="form-control" id="txtEmail" aria-describedby="email">
-        <div *ngIf="createForm.get('email')?.errors?.['email'] " class="small text-danger" >Gecerli bir e-mail giriniz.</div>
+          <label for="txtSurname" class="form-label">Surname</label>
+          <input formControlName="surname" type="text" class="form-control" id="txtSurname" aria-describedby="surname">
       </div>
       <div class="mb-3">
-        <label for="txtPassword" class="form-label">Password</label>
-        <input formControlName="password" type="text" class="form-control" id="txtPassword" value="123456">
+          <label for="txtEmail" class="form-label">Email Address</label>
+          <input formControlName="email" type="email" class="form-control" id="txtEmail" aria-describedby="email">
+          <div *ngIf="createForm.get('email')?.errors?.['email'] " class="small text-danger">Gecerli bir e-mail giriniz.</div>
       </div>
-    <div>
-        <select formControlName="roleId" class="form-select my-2" aria-label="Choose Role">
-            <option selected value="0">Choose Role</option>
-            <option value="1">Admin</option>
-            <option value="2">Supervisor</option>
-            <option value="3">Reporter</option>
-            </select>
-            
-    </div>
+      <div class="mb-3">
+          <label for="txtPassword" class="form-label">Password</label>
+          <input formControlName="password" type="text" class="form-control" id="txtPassword" value="123456">
+      </div>
+      <div>
+          <select formControlName="roleId" class="form-select my-2" aria-label="Choose Role">
+              <option selected value="0">Choose Role</option>
+              <option value="1">Admin</option>
+              <option value="2">Supervisor</option>
+              <option value="3">Reporter</option>
+          </select>
+      </div>
 
-
-    <button [disabled]="!createForm.valid" type="submit" class="btn btn-primary">Submit</button>
-    <button class="btn btn-warning ms-2" [routerLink]="['..']">Geri</button>
+      <button [disabled]="!createForm.valid" type="submit" class="btn btn-primary">Submit</button>
+      <button class="btn btn-warning ms-2" [routerLink]="['..']">Back</button>
   </form>
-  </div>
+</div>

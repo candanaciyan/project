@@ -1,32 +1,27 @@
-
-<!-- <div class="card">
-    <div class="" (click)="cardCalled()">
-        <div>Product Name: {{ product.name | uppercase}}</div>
-        <div>Quantity: {{ product.quantity }}</div>
-        <div>Minimum: {{ product.minimum }} </div>
-        <div>Description: {{ product.description }}</div>
-    </div>
-</div> -->
-
-
-<div class="card">
-    <div class="d-flex justify-content-end me-1 mb-2">
-        <mat-icon class="edit me-1" fontIcon="edit" (click)="editProduct()"></mat-icon>
-        <mat-icon class="close" fontIcon="close" (click)="deleteProductButtonClicked()"></mat-icon>
-    </div>
-    <div class="d-flex justify-content-center">
-        <img src="{{product.image}}" height="50px"/>
-    </div>
-    <div class="d-flex">
-        <div>Name:</div>
-        <div class="ms-2">{{product.name}}</div>
-    </div>
-    <div class="d-flex">
-        <div>Minimum:</div>
-        <div class="ms-2">{{product.minimum}}</div>
-    </div>
-    <div class="d-flex">
-        <div>Description:</div>
-        <div class="ms-2">{{product.description}}</div>
+<div class="card-container">
+    <div class="card">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="{{product.image}}" height="50px" class="me-2"/>
+                <div class="d-flex flex-column">
+                    <div class="d-flex">
+                        <div>Name:</div>
+                        <div class="ms-2">{{product.name}}</div>
+                    </div>
+                    <div class="d-flex">
+                        <div>Minimum Limit:</div>
+                        <div class="ms-2">{{product.minimum}}</div>
+                    </div>
+                    <div class="d-flex">
+                        <div>Description:</div>
+                        <div class="ms-2">{{product.description}}</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <mat-icon class="edit me-1" fontIcon="edit" (click)="editProduct()"></mat-icon>
+                <mat-icon class="close" fontIcon="close" (click)="deleteProductButtonClicked()"></mat-icon>
+            </div>
+        </div>
     </div>
 </div>

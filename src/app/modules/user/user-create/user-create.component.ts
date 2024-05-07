@@ -32,8 +32,8 @@ export class UserCreateComponent {
 
 
   submit() {
-   let userId = this.loginService.userId;
-   this.userService.createUser({ ...this.createForm.value, userId }).subscribe({
+
+   this.userService.createUser({ ...this.createForm.value}).subscribe({
      next: (resp) => {
       console.log(resp);
        this.toastr.success('User Created');
@@ -42,7 +42,7 @@ export class UserCreateComponent {
      },
      error: (err) => {
        console.log(err);
-       this.toastr.error("Bu email ile kayıtlı kullanıcı var. Lütfen tekrar deneyin. ");
+       this.toastr.error("There is already a registered user with this email. Please try again. ");
      }
    });
   }

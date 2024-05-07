@@ -12,7 +12,7 @@ import { MainDialogueComponent } from '../main-dialogue/main-dialogue.component'
 })
 export class ProductCardComponent {
   //disardan gonderilen parametreleri almasi icin buraya iki tane degisken tanimliyorum
-  @Input() product: Product = new Product(0,'',0,0,'','');
+  @Input() product: Product = new Product(0,'',0,'','');
   //yazilimIlan.ts interface ini classa cevirdi. new diyerek instance da yaratmak istedigimiz icin null olmamasi icin
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();

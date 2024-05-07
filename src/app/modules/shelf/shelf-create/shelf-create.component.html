@@ -1,20 +1,17 @@
 <div class="container-fluid my-4">
-     <form [formGroup]="shelfCreateForm" (submit)="createShelf()">
-     
- <div class="mb-3">
-<label for="txtCount" class="form-label">How many will be created</label>
- <input formControlName="count" type="number" class="form-control" id="txtCount" placeholder="Count">
- </div>
- <div class="mb-3">
-   <label for="txtCapacity" class="form-label">Capacity</label>
-   <input formControlName="capacity" type="number" class="form-control" id="txtCapacity" value="5" placeholder="Capacity"  readonly>
- </div>     
- <button class="btn btn-primary" type="submit">Create Shelf</button>
-<button class="ms-2 btn btn-warning" type="button" (click)="close()">Cancel</button>
- </form>
+  <form [formGroup]="shelfCreateForm" (submit)="createShelf()">
+    <div class="mb-3">
+      <label for="txtCount" class="form-label">How many shelves will be created</label>
+      <input formControlName="count" type="number" class="form-control" id="txtCount" placeholder="Count">
     </div>
+    <div class="mb-3">
+      <label for="txtCapacity" class="form-label">Capacity</label>
+      <input formControlName="capacity" type="number" class="form-control" id="txtCapacity" value="5" placeholder="Capacity" readonly>
+    </div>
+    <button class="btn btn-primary me-2" type="submit">Create Shelf</button>
+    <button class="btn btn-secondary" type="button" (click)="close()">Cancel</button>
+  </form>
+</div>
 
-          
-    
   
     

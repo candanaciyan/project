@@ -1,8 +1,5 @@
 <div class="container-fluid user-select-none">
     <div class="mt-2">
-    @if (users.length == 0) {
-        It seems there are no users...
-    } @else {
         <table class="table table-hover boxTable">
             <thead>
                 <tr>
@@ -20,15 +17,20 @@
                     <td>{{user.email}}</td>
                     <div>
                     <td>
-                        <button class="btn btn-warning btn-sm ms-2" (click)="editUser()">Edit</button>
-                        <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser()">Delete</button>
+                        <button class="btn btn-warning btn-sm ms-2" (click)="editUser()">
+                            <span class="btn-text">Edit</span>
+                            <span class="btn-icon">✏️</span>
+                        </button>
+                        
+                        <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser()">
+                            <span class="btn-text">Delete</span>
+                            <span class="btn-icon">❌</span>
+                        </button>
                     </td>
                 </div>
                 </tr>
                 }
             </tbody>
-        </table>
-        
-    }
-    </div>
+        </table>      
+        </div>
 </div>

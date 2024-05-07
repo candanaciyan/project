@@ -15,12 +15,13 @@ import { Product } from '../../../shared/model/product';
 export class ProductCreateComponent implements OnInit {
   productForm = this.fb.nonNullable.group({
     name: '',
-    quantity: 0,
     minimum: 0,
-    description: '',
-    });
-    selectedImage = '';
+    description: '', 
+    image: '',  
+        });
     productId = 0;
+    selectedImage = '';
+    
 //     buraya selected image gibi formun disinda saklayacagim id degiskeni olusturduk 
 // id 0 sa yaratma modunda calisiyor create fruit  degilse guncelleme modunda aciyor id ye bakip
 
@@ -36,32 +37,33 @@ export class ProductCreateComponent implements OnInit {
 
   submit() {
     let name = this.productForm.get('name')!.value;
-    let quantity = this.productForm.get('quantity')!.value;
     let minimum = this.productForm.get('minimum')!.value;
     let description = this.productForm.get('description')!.value;
-    this.productService.createProduct(new Product(this.productId, name,quantity,minimum,description, this.selectedImage)).subscribe({
+    let image = this.productForm.get('image')!.value;
+    this.productService.createProduct(new Product(this.productId, name,minimum, description, image)).subscribe({
 
       next: (resp) => {
-        this.toastr.success('Product Oluşturulmuştur');
+        this.toastr.success('Product created.');
         this.router.navigate(['..'], { relativeTo: this.route });
       },
       error: (err) => {
         console.log(err);
-        this.toastr.error("Hata oluştu");
+        this.toastr.error("Product Error Occurred.");
       }
     });
   }
-  // submit() {
-  //   let name = this.productForm.get('name')!.value;
-  //   let minimum = this.productForm.get('minimum')!.value;
-  //   this.productService.createProduct(new Product(this.productId, name, minimum, this.selectedImage)).subscribe({
-  //     next: (result) => {
-  //       this.toastr.info('Product created.');
-  //       this.router.navigate(['..'], { relativeTo: this.route });
-  //     }
-  //   });
-  // }
 
+  onImageSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.selectedImage = reader.result as string;
+      };
+    }
+  }
+  
 
   ngOnInit(): void {
     if (this.productService.editingProduct != null) {

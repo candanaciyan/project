@@ -1,0 +1,35 @@
+/* Örnek stil kuralları - İhtiyaca göre düzenlenebilir */
+.container-fluid {
+    background-color: #f8f9fa; /* Örnek arka plan rengi */
+    padding: 20px;
+    border-radius: 10px; /* Köşeleri yuvarlak hale getirme */
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    border-color: #ced4da; /* Örnek kenarlık rengi */
+  }
+  
+  .btn-primary {
+    background-color: #007bff; /* Örnek birincil buton rengi */
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3; /* Butonun üzerine gelindiğinde rengi değiştirme */
+    border-color: #0056b3;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d; /* Örnek ikincil buton rengi */
+    border-color: #6c757d;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268; /* Butonun üzerine gelindiğinde rengi değiştirme */
+    border-color: #5a6268;
+  }
+  

@@ -5,10 +5,6 @@
           <input formControlName="name" type="text" class="form-control" id="txtName" placeholder="Product Name">
       </div>
       <div class="mb-3">
-          <label for="txtQuantity" class="form-label">Quantity</label>
-          <input formControlName="quantity" type="number" class="form-control" id="txtQuantity" placeholder="Quantity">
-      </div>
-      <div class="mb-3">
         <label for="txtMinimum" class="form-label">Minimum</label>
         <input formControlName="minimum" type="number" class="form-control" id="txtMinimum" placeholder="Minimum">
     </div>
@@ -59,5 +55,21 @@
       </button>
       <button type="button" class="btn btn-success ms-3" routerLink="..">Cancel</button>
   </form>
+  <div class="container-fluid">
+    <form [formGroup]="productForm" (submit)="submit()">
+      <!-- Diğer form alanları -->
+      <div class="mb-3">
+        <label for="imageInput" class="form-label">Upload Image</label>
+        <input type="file" (change)="onImageSelected($event)" class="form-control" id="imageInput">
+      </div>
+  
+      <div *ngIf="selectedImage">
+        <img [src]="selectedImage" alt="Selected Image" height="100">
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  
  
 </div>
