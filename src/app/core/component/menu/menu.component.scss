@@ -17,6 +17,15 @@
     text-decoration: underline;
     color: brown !important;
  }
- .w-100.vh-100 {
-    background-color: #319e99; /* Mavi arka plan rengi */
+
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/other/depo2.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
   }
