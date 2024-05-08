@@ -55,21 +55,6 @@
       </button>
       <button type="button" class="btn btn-success ms-3" routerLink="..">Cancel</button>
   </form>
-  <div class="container-fluid">
-    <form [formGroup]="productForm" (submit)="submit()">
-      <!-- Diğer form alanları -->
-      <div class="mb-3">
-        <label for="imageInput" class="form-label">Upload Image</label>
-        <input type="file" (change)="onImageSelected($event)" class="form-control" id="imageInput">
-      </div>
-  
-      <div *ngIf="selectedImage">
-        <img [src]="selectedImage" alt="Selected Image" height="100">
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
-  
+    
  
 </div>

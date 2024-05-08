@@ -49,13 +49,10 @@ export class UserManagementComponent implements OnInit {
       }
 
       selectUser(user: User) {
-        console.log(user.email);
-        if (user == this.selectedUser) {
-          this.selectedUser = null;
-        } else {
+  
+    
           this.selectedUser = user;
-        }
-      }
+              }
 
   editUser() {
     

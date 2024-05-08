@@ -9,6 +9,11 @@
            >
         </app-product-card>
     </div>
+    <div>
+        <button (click)="previousPage()">Previous</button>
+        Page {{ currentPage }} of {{ totalPages }}
+        <button (click)="nextPage()">Next</button>
+    </div>
  </div>
 
 <!-- edit ozelligi mi editfruite baglayacagim diyorum $event yaziyoruz

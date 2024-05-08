@@ -6,7 +6,8 @@
                     <th>User Name</th>
                     <th>User Surname</th>
                     <th>User Email</th>
-                 </tr>
+                    <th>Actions</th>
+                </tr>
             </thead>
             <tbody>
                 @for (user of users; track user.email) {
@@ -14,22 +15,22 @@
                     <td>{{user.name}}</td>
                     <td>{{user.surname}}</td>
                     <td>{{user.email}}</td>
+                    <div>
+                    <td>
+                        <button class="btn btn-primary btn-sm ms-2" (click)="editUser()">
+                            <span class="btn-text">Change Password</span>
+                            <span class="btn-icon">🔑</span>
+                        </button>
+
+                        <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser()">
+                            <span class="btn-text">Delete</span>
+                            <span class="btn-icon">❌</span>
+                        </button>
+                    </td>
+                </div>
                 </tr>
                 }
             </tbody>
-        </table>      
-<div>@if (selectedUser != null) {
-    <button class="btn btn-primary btn-sm ms-2" (click)="editUser()">
-        <span class="btn-text">Change Password</span>
-        <span class="btn-icon">🔑</span>
-    </button>                        
-    <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser()">
-        <span class="btn-text">Delete</span>
-        <span class="btn-icon">❌</span>
-    </button>
-}
-</div>
-
-
+        </table>
         </div>
 </div>

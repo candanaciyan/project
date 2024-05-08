@@ -11,9 +11,12 @@ import { Product } from '../../../shared/model/product';
   styleUrl: './product-management.component.scss'
 })
 export class ProductManagementComponent implements OnInit {
-
-
   products: Product[] = [];
+  allProducts: Product[] = [];
+  currentPage = 1;
+  pageSize = 3; // Number of products per page
+  totalPages = 0;
+
 
   constructor(
     private router: Router,
@@ -29,9 +32,31 @@ export class ProductManagementComponent implements OnInit {
     this.productService.getAllProducts().subscribe({
       next: (result) => {
         this.products = result;
+        this.allProducts = result;
+        this.totalPages = Math.ceil(this.allProducts.length / this.pageSize);
+        this.updateDisplayedProducts();
       }
     });
   }
+  updateDisplayedProducts() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    this.products = this.allProducts.slice(startIndex, endIndex);
+}
+
+nextPage() {
+    if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+        this.updateDisplayedProducts();
+    }
+}
+
+previousPage() {
+    if (this.currentPage > 1) {
+        this.currentPage--;
+        this.updateDisplayedProducts();
+    }
+}
 
   cardSelected(message: string) {
     console.log('Card Selected: ' + message);

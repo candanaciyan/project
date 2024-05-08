@@ -39,7 +39,7 @@ export class ProductCreateComponent implements OnInit {
     let name = this.productForm.get('name')!.value;
     let minimum = this.productForm.get('minimum')!.value;
     let description = this.productForm.get('description')!.value;
-    let image = this.productForm.get('image')!.value;
+    let image = this.selectedImage;
     this.productService.createProduct(new Product(this.productId, name,minimum, description, image,0)).subscribe({
 
       next: (resp) => {
@@ -53,16 +53,7 @@ export class ProductCreateComponent implements OnInit {
     });
   }
 
-  onImageSelected(event: any) {
-    const file: File = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.selectedImage = reader.result as string;
-      };
-    }
-  }
+
   
 
   ngOnInit(): void {

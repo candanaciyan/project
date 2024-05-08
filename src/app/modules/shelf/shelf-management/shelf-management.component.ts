@@ -55,11 +55,9 @@ export class ShelfManagementComponent implements OnInit {
 
 
   selectShelf(shelf: Shelf) {
-    if (shelf == this.selectedShelf) {
-      this.selectedShelf = null;
-    } else {
+
       this.selectedShelf = shelf;
-    }
+    
   }
 
   deleteShelf() {
@@ -71,7 +69,9 @@ export class ShelfManagementComponent implements OnInit {
     });
     dialog.afterClosed().subscribe({
       next: (data) => {
+                
         if (data?.result === 'yes') {
+          
           this.mainDeleteShelf();
         }
       }
@@ -80,9 +80,10 @@ export class ShelfManagementComponent implements OnInit {
 
   }
   mainDeleteShelf() {
+    
     if (this.selectedShelf) {
-      
       this.shelfService.deleteShelf(this.selectedShelf!.id).subscribe({
+      
         next: () => {
           this.toastr.info('Shelf deleted');
           this.refreshShelves();

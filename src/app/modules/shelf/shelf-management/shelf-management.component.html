@@ -30,21 +30,18 @@
                         <td>{{ calculateDifference(shelf) }}</td>
                         <td>{{shelf.productId}}</td>
                         <td>{{shelf.productName}}</td>                                         
-                      
+                        @if (role == "admin" && selectedShelf != null && shelf.id == selectedShelf.id) { 
+                            <td>
+                                <button class="btn btn-sm btn-danger" (click)="deleteShelf()">
+                                    <span class="d-none d-md-inline">Delete</span>
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        }
                     </tr>
                 }
             </tbody>
         </table>
-
-    }
-    @if (role == "admin" && selectedShelf != null) { 
-    
-        <button class="btn btn-sm btn-danger ms-2" (click)="deleteShelf()">
-            <span class="d-none d-md-inline">Delete</span>
-            <i class="fas fa-trash-alt"></i>
-        </button>
-        
     }
     </div>
-
 </div>
