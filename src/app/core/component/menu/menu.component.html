@@ -1,7 +1,7 @@
 <div class="w-100 vh-100">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">   
-        <a class="navbar-brand">Menu</a>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary px-5">
+      <div class="container">   
+        <a class="navbar-brand">ATOM</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,12 +15,12 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" [routerLink]="['/menu/product']" [class.active]="url == '/menu/product'">Product Management</a></li>
-                    @if(role =='admin') {
-                      <li><a class="dropdown-item" [routerLink]="['/menu/product/create']" routerLinkActive="active">Product Create</a></li>
-                    }
-                    @if(role == 'supervisor') {             
+                    <li><a class="dropdown-item" [routerLink]="['/menu/product/create']" routerLinkActive="active">Product Create</a></li>
                     <li><a class="dropdown-item" [routerLink]="['/menu/product/accept']" routerLinkActive="active">Product Accept</a></li>
                     <li><a class="dropdown-item" [routerLink]="['/menu/product/sale']" routerLinkActive="active">Product Sale</a></li>
+                    @if(role =='admin') {
+                    }
+                    @if(role == 'supervisor') {             
                     }
                   </ul>
                 </li>
@@ -75,6 +75,9 @@
       </div>
     </nav>
   <div class="w-100 h-100 d-flex">
+    <div class="container">
+      <!-- Content here -->
       <router-outlet />
+    </div>
   </div>
   </div>

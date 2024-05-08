@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid hidden" hidden>
   <form [formGroup]="productForm" (submit)="submit()">
       <div class="mb-3">
           <label for="txtName" class="form-label">Product Name</label>
@@ -73,3 +73,89 @@
   
  
 </div>
+
+
+
+<div class="container my-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Create Product</h5>
+            <form [formGroup]="productForm" (submit)="submit()">
+                <div class="mb-3">
+                    <label for="txtName" class="form-label">Product Name</label>
+                    <input formControlName="name" type="text" class="form-control" id="txtName" placeholder="Product Name">
+                </div>
+                <div class="mb-3">
+                  <label for="txtMinimum" class="form-label">Minimum</label>
+                  <input formControlName="minimum" type="number" class="form-control" id="txtMinimum" placeholder="Minimum">
+              </div>
+              <div class="mb-3">
+                  <label for="txtDescription" class="form-label">Description</label>
+                  <input formControlName="description" type="text" class="form-control" id="txtDescription" placeholder="Description">
+              </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <div style="float:left">
+                            <div class="dropdown d-flex">
+                                Image: 
+                                <button class="form-select ms-2 mb-4" type="button" id="productSelectButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div>
+                                        @if (selectedImage == '') {
+                                            Select Image
+                                        } @else {
+                                            <img src="{{selectedImage}}" height="20px"/>
+                                        }
+                                    </div>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="productSelectButton" id="products">
+                                    @for (product of getProducts(); track product.filename) {
+                                        <li>
+                                            <a class="dropdown-item" (click)="imageSelect('/assets/img/'+product.filename)">
+                                                <img src="/assets/img/{{ product.filename }}" height="30px" width="30px" class="img-dropdown">
+                                                {{ product.name}}
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div style="float:left">
+                            <div id="selected-image" style="align-items: center; display:flex;margin-left:5px"></div>
+                        </div>
+                    </div>
+                </div>
+          
+               
+            </form>
+
+
+            <form [formGroup]="productForm" (submit)="submit()">
+    
+
+
+
+
+
+
+
+
+
+                
+              <button class="btn btn-primary me-2" type="submit">
+                Create Product
+              </button>
+              <button class="btn btn-secondary" type="button">
+                Cancel
+              </button>
+            </form>
+            <!-- <a href="#" class="btn btn-primary">Create</a>
+          <a href="#" class="btn btn-secondary mx-2">Cancel</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

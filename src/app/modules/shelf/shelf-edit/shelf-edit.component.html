@@ -1,10 +1,27 @@
-<div class="container-fluid my-4">
-    <form [formGroup]="shelfForm" (submit)="submit()">
-        <div class="mb-3">
-            <label class="form-label">Capacity</label>
-            <input formControlName="capacity" type="number" class="form-control" id="txtMinimum" placeholder="Capacity">
+<div class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-6 ">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Update Shelf</h5>
+            <form [formGroup]="shelfForm" (submit)="submit()">
+    
+              <div class="mb-3">
+                <label for="txtMinimum" class="form-label">Capacity</label>
+                <input formControlName="capacity" type="number" class="form-control" id="txtMinimum" 
+                  placeholder="Capacity"  />
+              </div>
+              <button class="btn btn-primary me-2" type="submit">
+                Update Shelf
+              </button>
+              <button class="btn btn-secondary" type="button" (click)="close()">
+                Cancel
+              </button>
+            </form>
+            <!-- <a href="#" class="btn btn-primary">Create</a>
+          <a href="#" class="btn btn-secondary mx-2">Cancel</a> -->
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary">Update</button>
-        <button class="ms-2 btn btn-warning" type="button" (click)="close()">Cancel</button>
-    </form>
-</div>
+      </div>
+    </div>
+  </div>

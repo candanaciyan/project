@@ -11,8 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
   loginForm = this.fb.nonNullable.group({
-    email: ['', Validators.email],
-    password: '',
+    email: ['a@gmail.com', Validators.email],
+    password: 'a',
   });
 
   constructor(

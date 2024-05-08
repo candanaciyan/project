@@ -1,4 +1,4 @@
-<div class="custom-form">
+<div class="custom-form mt-4">
   <form [formGroup]="createForm" (ngSubmit)="submit()" class="needs-validation" novalidate>
       <div class="mb-3">
           <label for="txtName" class="form-label">Name</label>
@@ -27,6 +27,6 @@
       </div>
 
       <button [disabled]="!createForm.valid" type="submit" class="btn btn-primary">Submit</button>
-      <button class="btn btn-warning ms-2" [routerLink]="['..']">Back</button>
+      <button class="btn btn-secondary ms-2" [routerLink]="['..']">Back</button>
   </form>
 </div>
