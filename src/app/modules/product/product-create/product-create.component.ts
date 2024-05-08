@@ -43,7 +43,7 @@ export class ProductCreateComponent implements OnInit {
     this.productService.createProduct(new Product(this.productId, name,minimum, description, image,0)).subscribe({
 
       next: (resp) => {
-        this.toastr.success('Product created.');
+        this.toastr.success('Product saved.');
         this.router.navigate(['..'], { relativeTo: this.route });
       },
       error: (err) => {

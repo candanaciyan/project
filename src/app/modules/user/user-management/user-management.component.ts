@@ -49,6 +49,7 @@ export class UserManagementComponent implements OnInit {
       }
 
       selectUser(user: User) {
+        console.log(user.email);
         if (user == this.selectedUser) {
           this.selectedUser = null;
         } else {
@@ -59,6 +60,7 @@ export class UserManagementComponent implements OnInit {
 
 
   editUser() {
+    
     let dialog =  this.dialog.open(UserPasswordChangeComponent, {
       width: '400px',
       enterAnimationDuration: '250ms',
@@ -80,21 +82,6 @@ export class UserManagementComponent implements OnInit {
           });
         }}})
       }
-
-
-
-
-
-
-  deletenaUser(user: User) {
- this.userService.deleteUser(user.email).subscribe({
- next: (data) => {
-  this.toastr.info('User Deleted');
-  this.refreshUsers();
-    }
- });
- }
-
 deleteUser() {
   let dialog =  this.dialog.open(MainDialogueComponent, {
     width: '300px',
@@ -112,9 +99,9 @@ deleteUser() {
 
 }
 mainDeleteUser() {
-  if (this.selectedUser) {
-    this.userService.deleteUser(this.selectedUser.email).subscribe({
-      next: (data) => {
+  
+    this.userService.deleteUser(this.selectedUser!.email).subscribe({
+      next: () => {
         this.toastr.info('User deleted');
         this.refreshUsers();
       },
@@ -122,7 +109,7 @@ mainDeleteUser() {
         this.toastr.error(err.error.mesaj);
       }
     });
-  }
+  
 }
 
 
