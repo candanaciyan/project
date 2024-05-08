@@ -23,11 +23,9 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     ProductRoutingModule,
-    FormsModule,
-  
+    FormsModule,  
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
-   
+    ToastrModule.forRoot(),   
     SharedModule,
   ],
   exports: [

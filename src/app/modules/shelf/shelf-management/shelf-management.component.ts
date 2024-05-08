@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { ShelfService } from '../../../shared/service/shelf.service';
 import { LoginService } from '../../../core/service/login.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ShelfEditComponent } from '../shelf-edit/shelf-edit.component';
 import { MainDialogueComponent } from '../../../shared/components/main-dialogue/main-dialogue.component';
 import { Shelf } from '../../../shared/model/shelf';
 import { ShelfCreateComponent } from '../shelf-create/shelf-create.component';
@@ -64,6 +63,7 @@ export class ShelfManagementComponent implements OnInit {
   }
 
   deleteShelf() {
+ 
     let dialog =  this.dialog.open(MainDialogueComponent, {
       width: '300px',
       enterAnimationDuration: '250ms',
@@ -81,8 +81,9 @@ export class ShelfManagementComponent implements OnInit {
   }
   mainDeleteShelf() {
     if (this.selectedShelf) {
-      this.shelfService.deleteShelf(this.selectedShelf.id).subscribe({
-        next: (data) => {
+      
+      this.shelfService.deleteShelf(this.selectedShelf!.id).subscribe({
+        next: () => {
           this.toastr.info('Shelf deleted');
           this.refreshShelves();
         },

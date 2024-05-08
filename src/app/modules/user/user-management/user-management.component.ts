@@ -57,8 +57,6 @@ export class UserManagementComponent implements OnInit {
         }
       }
 
-
-
   editUser() {
     
     let dialog =  this.dialog.open(UserPasswordChangeComponent, {
