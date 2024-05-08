@@ -22,11 +22,9 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [
     CommonModule,
     ShelfRoutingModule,
-    FormsModule,
-  
+    FormsModule,  
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
-    
+    ToastrModule.forRoot(),    
     SharedModule,
   ]
 })

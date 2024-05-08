@@ -23,11 +23,11 @@ export class UserService {
   }
 
   deleteUser(email: string): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/user/delete',  email );
+    return this.http.post<SuccessResponse>('/user/delete', {email} );
   }
-  updateUser(email: string): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>('/user/update', {email});
-  }
+  // updateUser(email: string): Observable<SuccessResponse> {
+  //   return this.http.post<SuccessResponse>('/user/update', {email});
+  // }
 
 
   public changePassword(dto: ChangePasswordRequest): Observable<SuccessResponse> {
@@ -36,8 +36,8 @@ export class UserService {
 
 
  
-  public changePasswordAdmin(email: string ): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>("/user/passwordadmin", { email });
+  public changePasswordAdmin(email: string,newPassword: string ): Observable<SuccessResponse> {
+    return this.http.post<SuccessResponse>("/user/passwordadmin", { email,newPassword});
   }
   //post ile olacak donus tipi de sunucu tarafinda tanimladigimiz default donus tipi var
   //fakat bu dto heryerde ortak olarak kullanilacak bir dto oldugu icin yerini shared tarafinda olmasi gerkiyor core da degil

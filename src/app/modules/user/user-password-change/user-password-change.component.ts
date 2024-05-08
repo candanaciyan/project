@@ -5,6 +5,8 @@ import { LoginService } from '../../../core/service/login.service';
 import { UserService } from '../../../shared/service/user.service';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../../../shared/model/user';
+import { AdminChangePasswordRequest } from '../../../shared/dto/adminChangePasswordRequest';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-password-change',
@@ -12,47 +14,34 @@ import { User } from '../../../shared/model/user';
   styleUrls: ['./user-password-change.component.scss']
 })
 export class UserPasswordChangeComponent {
+
   users: User[] = [];
-  selectedUser: User | null = null;
-  passwordForm: FormGroup;
+  selectedUser: User | null = null; 
+
+  passwordForm = this.fb.nonNullable.group({
+    email: { value: this.selectedUser?.email, disabled: true },  
+    newPassword: ["", [ Validators.required, Validators.minLength(3),Validators.pattern(/^(?=.*[0-9])/)] ],
+    passwordVerification: ["", Validators.required]
+  }, { validators: this.passwordValidationMatchValidator('newPassword', 'passwordVerification') });
 
   constructor(
-    private router: Router,
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private userService: UserService,
     private fb: FormBuilder,
+    private dialogRef: MatDialogRef<UserPasswordChangeComponent>,
   ) {
-    this.passwordForm = this.fb.group({
-      name: { value: this.selectedUser?.name , disabled: true },
-      surname: { value: this.selectedUser?.surname, disabled: true },
-      email: { value: this.selectedUser?.email, disabled: true },  
-      newPassword: ["", [ Validators.required, Validators.minLength(3),Validators.pattern(/^(?=.*[0-9])/)] ],
-      passwordVerification: ["", Validators.required]
-    }, { validators: this.passwordValidationMatchValidator('newPassword', 'passwordVerification') });
+
   }
 
+  close() {
+    this.dialogRef.close();
+  }
   submit() {
-
+    const newPassword = this.passwordForm.get('newPassword')!.value;
+    this.dialogRef.close({newPassword});
   }
 
-  changeUserPassword(email: string) {
-    if (!email) {
-      this.toastr.error("Please select a user.");
-      return;
-    }
-
-    this.userService.changePasswordAdmin(email).subscribe({
-      next: (result) => {
-        console.log(result);
-        this.toastr.success("Password changed successfully.");
-      },
-      error: (err) => {
-        console.log(err);
-        this.toastr.error("Password change failed.");
-      }
-    });
-  }
   passwordValidationMatchValidator(newPasswordControlName: string, passwordVerificationControlName: string): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} | null => {
       const newPassword = control.get(newPasswordControlName);
@@ -69,4 +58,6 @@ export class UserPasswordChangeComponent {
       return { 'passwordMismatch': true };
     };
   }
+
 }
+

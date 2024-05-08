@@ -45,7 +45,19 @@ export class UserManagementComponent implements OnInit {
   createUser() {
     this.router.navigate(['create'], { relativeTo: this.route });
     //router ile o sayfaya yonlendirdi 
-  }
+
+      }
+
+      selectUser(user: User) {
+        if (user == this.selectedUser) {
+          this.selectedUser = null;
+        } else {
+          this.selectedUser = user;
+        }
+      }
+
+
+
   editUser() {
     let dialog =  this.dialog.open(UserPasswordChangeComponent, {
       width: '400px',
@@ -55,7 +67,7 @@ export class UserManagementComponent implements OnInit {
     dialog.afterClosed().subscribe({
       next: (data) => {
         if (data) {
-          this.userService.changePasswordAdmin(this.selectedUser!.email).subscribe({
+          this.userService.changePasswordAdmin(this.selectedUser!.email,data.newPassword).subscribe({
             next: (result) => {
               console.log(result);
               this.toastr.success("Password changed successfully.");
@@ -70,13 +82,7 @@ export class UserManagementComponent implements OnInit {
       }
 
 
-selectUser(user: User) {
-  if (user == this.selectedUser) {
-    this.selectedUser = null;
-  } else {
-    this.selectedUser = user;
-  }
-}
+
 
 
 
