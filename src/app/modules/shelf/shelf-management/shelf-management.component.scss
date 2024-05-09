@@ -1,23 +1,23 @@
-.boxTable {
+.shelfTable {
     border-collapse: collapse;
     width: 100%;
 }
 
-.boxTable th, .boxTable td {
+.shelfTable th, .shelfTable td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
 }
 
-.boxTable th {
+.shelfTable th {
     background-color: #f2f2f2;
 }
 
-.boxTable tr:nth-child(even) {
+.shelfTable tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.boxTable tr:hover {
+.shelfTable tr:hover {
     background-color: #e9e9e9;
 }
 .container-fluid {
@@ -25,8 +25,8 @@
   }
 
 /* Tüm tablo hücrelerinin genişliğini ayarla */
-.boxTable th,
-.boxTable td {
+.shelfTable th,
+.shelfTable td {
     width: 100px; /* Tüm hücrelerin genişliği (örneğin) 100 piksel olacak şekilde ayarlanabilir */
     white-space: nowrap; /* Uzun metinlerin hücrelerden taşmasını önlemek için satır sonu kesme uygulayın */
     overflow: hidden; /* Hücre içeriğinin taşmasını önlemek için gizleme uygulayın */
