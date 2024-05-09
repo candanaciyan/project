@@ -1,6 +1,6 @@
-<div class="container-fluid user-select-none">
+<div class="container user-select-none">
     <div class="mt-2">
-        <table class="table table-hover boxTable">
+        <table class="table table-hover  table-striped  boxTable">
             <thead>
                 <tr>
                     <th>User Name</th>
@@ -15,22 +15,22 @@
                     <td>{{user.name}}</td>
                     <td>{{user.surname}}</td>
                     <td>{{user.email}}</td>
-                    <div>
                     <td>
+                        <div>
                         <button class="btn btn-primary btn-sm ms-2" (click)="editUser()">
                             <span class="btn-text">Change Password</span>
                             <span class="btn-icon">🔑</span>
                         </button>
-
+                        
                         <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser()">
                             <span class="btn-text">Delete</span>
                             <span class="btn-icon">❌</span>
                         </button>
+                    </div>
                     </td>
-                </div>
                 </tr>
                 }
             </tbody>
-        </table>
+        </table>      
         </div>
 </div>

@@ -3,6 +3,7 @@
     @if (shelves.length == 0) {
         It seems there are no boxes...
     } @else {
+        <div class="mb-3">
         <input type="text" [(ngModel)]="filterText" (input)="filterShelves()" placeholder="Enter product name to filter" style="width: 300px;">
         
         <table class="table table-hover boxTable">
@@ -10,9 +11,8 @@
                 <tr>
                     <th>Shelf Id</th>
                     <th>Shelf Count</th>
-                    <th>Shelf Capacity</th>
-                    <th>Difference</th>
-                    <th>Product Id</th>
+                    <th>Difference</th>   
+                    <th>Shelf Capacity</th>                                     
                     <th>Product Name</th>                 
                     @if (role == "admin" && selectedShelf != null){
                         <th>Actions</th>
@@ -26,9 +26,8 @@
                     (click)="selectShelf(shelf)">
                         <td>{{shelf.id}}</td>
                         <td>{{shelf.count}}</td>
-                        <td>{{shelf.capacity}}</td>
-                        <td>{{ calculateDifference(shelf) }}</td>
-                        <td>{{shelf.productId}}</td>
+                        <td>{{ calculateDifference(shelf) }}</td>    
+                        <td>{{shelf.capacity}}</td>                                            
                         <td>{{shelf.productName}}</td>                                         
                         @if (role == "admin" && selectedShelf != null && shelf.id == selectedShelf.id) { 
                             <td>
@@ -42,6 +41,7 @@
                 }
             </tbody>
         </table>
+    </div>
     }
     </div>
 </div>

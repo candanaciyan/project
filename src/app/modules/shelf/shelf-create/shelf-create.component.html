@@ -1,17 +1,42 @@
-<div class="container-fluid my-4">
-  <form [formGroup]="shelfCreateForm" (submit)="createShelf()">
-    <div class="mb-3">
-      <label for="txtCount" class="form-label">How many shelves will be created</label>
-      <input formControlName="count" type="number" class="form-control" id="txtCount" placeholder="Count">
+<div class="container my-4">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Create Shelf</h5>
+          <form [formGroup]="shelfCreateForm" (submit)="createShelf()">
+            <div class="mb-3">
+              <label for="txtCount" class="form-label"
+                >How many shelves will be created</label>
+              <input
+                formControlName="count"
+                type="number"
+                class="form-control"
+                id="txtCount"
+                placeholder="Count"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="txtCapacity" class="form-label">Capacity</label>
+              <input
+                formControlName="capacity"
+                type="number"
+                class="form-control"
+                id="txtCapacity"
+                value="5"
+                placeholder="Capacity"
+                readonly
+              />
+            </div>
+            <button class="btn btn-primary me-2" type="submit">
+              Create Shelf
+            </button>
+            <button class="btn btn-secondary" type="button" (click)="close()">
+              Back
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-    <div class="mb-3">
-      <label for="txtCapacity" class="form-label">Capacity</label>
-      <input formControlName="capacity" type="number" class="form-control" id="txtCapacity" value="5" placeholder="Capacity" readonly>
-    </div>
-    <button class="btn btn-primary me-2" type="submit">Create Shelf</button>
-    <button class="btn btn-warning" type="button" (click)="close()">Back</button>
-  </form>
+  </div>
 </div>
-
-  
-    

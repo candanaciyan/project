@@ -39,6 +39,7 @@ export class AccountComponent {
         next: (result) => {
           console.log(result);
           this.toastr.info("Password Changed.");
+          this.router.navigate(['/menu']);
         },
         error: (err) => {
           console.log(err);

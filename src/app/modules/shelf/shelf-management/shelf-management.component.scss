@@ -23,3 +23,13 @@
 .container-fluid {
     background-color: #2e456e; /* Arka plan rengini buradan ayarlayabilirsiniz */
   }
+
+/* Tüm tablo hücrelerinin genişliğini ayarla */
+.boxTable th,
+.boxTable td {
+    width: 100px; /* Tüm hücrelerin genişliği (örneğin) 100 piksel olacak şekilde ayarlanabilir */
+    white-space: nowrap; /* Uzun metinlerin hücrelerden taşmasını önlemek için satır sonu kesme uygulayın */
+    overflow: hidden; /* Hücre içeriğinin taşmasını önlemek için gizleme uygulayın */
+    text-overflow: ellipsis; /* Hücre içeriğinin taşması durumunda üç nokta (...) görüntüleyin */
+}
+

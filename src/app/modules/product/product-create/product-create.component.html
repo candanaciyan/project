@@ -1,60 +1,58 @@
-<div class="container-fluid">
-  <form [formGroup]="productForm" (submit)="submit()">
-      <div class="mb-3">
-          <label for="txtName" class="form-label">Product Name</label>
-          <input formControlName="name" type="text" class="form-control" id="txtName" placeholder="Product Name">
-      </div>
-      <div class="mb-3">
-        <label for="txtMinimum" class="form-label">Minimum</label>
-        <input formControlName="minimum" type="number" class="form-control" id="txtMinimum" placeholder="Minimum">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="productForm" (submit)="submit()">
+                        <div class="mb-3">
+                            <label for="txtName" class="form-label">Product Name</label>
+                            <input formControlName="name" type="text" class="form-control" id="txtName" placeholder="Product Name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtMinimum" class="form-label">Minimum</label>
+                            <input formControlName="minimum" type="number" class="form-control" id="txtMinimum" placeholder="Minimum">
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtDescription" class="form-label">Description</label>
+                            <input formControlName="description" type="text" class="form-control" id="txtDescription" placeholder="Description">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Image</label>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="productSelectButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    @if (selectedImage == '') {
+                                        Select Image
+                                    } @else {
+                                        <img src="{{selectedImage}}" height="20px" class="me-2"/>
+                                        Selected Image
+                                    }
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="productSelectButton">
+                                    @for (product of getProducts(); track product.filename) {
+                                        <li>
+                                            <a class="dropdown-item" (click)="imageSelect('/assets/img/'+product.filename)">
+                                                <img src="/assets/img/{{ product.filename }}" height="30px" width="30px" class="img-dropdown">
+                                                {{ product.name}}
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary me-2">
+                                @if (productId == 0) {
+                                    Add
+                                } @else {
+                                    Update
+                                }
+                            </button>
+                            <button type="button" class="btn btn-success" routerLink="..">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="txtDescription" class="form-label">Description</label>
-        <input formControlName="description" type="text" class="form-control" id="txtDescription" placeholder="Description">
-    </div>
-      
-      <div class="row">
-          <div class="col">
-              <div style="float:left">
-                  <div class="dropdown d-flex">
-                      Image: 
-                      <button class="form-select ms-2 mb-4" type="button" id="productSelectButton"
-                          data-bs-toggle="dropdown" aria-expanded="false">
-                          <div>
-                              @if (selectedImage == '') {
-                                  Select Image
-                              } @else {
-                                  <img src="{{selectedImage}}" height="20px"/>
-                              }
-                          </div>
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="productSelectButton" id="products">
-                          @for (product of getProducts(); track product.filename) {
-                              <li>
-                                  <a class="dropdown-item" (click)="imageSelect('/assets/img/'+product.filename)">
-                                      <img src="/assets/img/{{ product.filename }}" height="30px" width="30px" class="img-dropdown">
-                                      {{ product.name}}
-                                  </a>
-                              </li>
-                          }
-                      </ul>
-                  </div>
-              </div>
-              <div style="float:left">
-                  <div id="selected-image" style="align-items: center; display:flex;margin-left:5px"></div>
-              </div>
-          </div>
-      </div>
-
-      <button type="submit" class="btn btn-primary">
-          @if (productId == 0) {
-              Add
-          } @else {
-              Update
-          }            
-      </button>
-      <button type="button" class="btn btn-success ms-3" routerLink="..">Cancel</button>
-  </form>
-    
- 
 </div>
