@@ -1,20 +1,26 @@
 <div class="container">
     <div class="row">
-      <div class="col">
-        <h2 class="mt-3"  >All Products With Count:</h2>
-      </div>
+        <div class="col">
+            <div class="custom-heading-container">
+                <h2 class="custom-heading">All Products With Count</h2>
+            </div>
+        </div>
     </div>
     <div class="d-flex flex-column">
         <app-product-card class="m-2" 
            *ngFor="let product of products" [product]="product"
            (edit)="editProduct($event)"
            (delete)="deleteProduct($event)"
-           >
+        >
+            <div class="action-buttons">
+                <button class="btn btn-primary" (click)="editProduct(product)">Edit</button>
+                <button class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
+            </div>
         </app-product-card>
     </div>
-    <div>
-        <button (click)="previousPage()">Previous</button>
-        Page {{ currentPage }} of {{ totalPages }}
-        <button (click)="nextPage()">Next</button>
+    <div class="d-flex justify-content-center align-items-center mt-3">
+        <button class="btn btn-primary me-2" (click)="previousPage()">Previous</button>
+        <span class="badge bg-secondary">Page {{ currentPage }} of {{ totalPages }}</span>
+        <button class="btn btn-primary ms-2" (click)="nextPage()">Next</button>
     </div>
- </div>
+</div>

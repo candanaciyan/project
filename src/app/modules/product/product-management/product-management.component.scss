@@ -1,0 +1,22 @@
+.custom-heading-container {
+    background-color: rgb(65, 14, 160);
+    padding: 10px;
+    border: 2px solid #130101;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.custom-heading {
+    color: rgb(221, 26, 26);
+    text-align: center;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Dikeyde merkezler */
+}
+
+.action-buttons button {
+    margin-bottom: 10px; /* Düğmeler arasında boşluk bırakır */
+    font-size: 1.1em; /* Düğme metin boyutunu biraz büyütür */
+}

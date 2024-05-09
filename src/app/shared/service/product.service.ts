@@ -25,12 +25,10 @@ export class ProductService {
     return this.http.post<SuccessResponse>('/product/update', product);
   }
 
-
-
   deleteProduct(id: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/product/delete', { id } );
   }
-  // cagiracagimiz urlyi vardik ve buraya fruitin id sini verecegiz
+  // cagiracagimiz urlyi vardik ve buraya product id sini verecegiz
   // id diye yazarsan 3-5 gibi id degerini yazar
   // { id } boyle koyarsan json objesi icinde id keyine karsilik id degiskeninin degerini icine  koyuyor oluyor
   // ve json gonderiyor bu onemli
