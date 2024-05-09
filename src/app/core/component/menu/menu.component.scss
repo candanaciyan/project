@@ -1,4 +1,4 @@
-.kategoriler {
+ .kategoriler {
     width: 12rem;
     margin: 1rem;
     button {
@@ -9,15 +9,12 @@
         background-color: red;
     }
 }
-.hesap {
-    margin-right: 5rem;
-}
+
 .active {
     font-weight: bold;
     text-decoration: underline;
     color: brown !important;
  }
-
   .background {
     position: fixed;
     top: 0;

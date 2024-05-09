@@ -1,8 +1,7 @@
 <div class="w-100 vh-100">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">  
-         
-        <a class="navbar-brand">Menu</a>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary px-5">
+      <div class="container">   
+        <a class="navbar-brand">ATOM</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -49,8 +48,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">                   
                       <li><a class="dropdown-item" [routerLink]="['/menu/user']" [class.active]="url == '/menu/user'">User Management</a></li>
-                      <li><a class="dropdown-item" [routerLink]="['/menu/user/create']" routerLinkActive="active">User Create</a></li>
-                                                         
+                      <li><a class="dropdown-item" [routerLink]="['/menu/user/create']" routerLinkActive="active">User Create</a></li>                                                         
                   </ul>
                 </li>                
               </ul>
