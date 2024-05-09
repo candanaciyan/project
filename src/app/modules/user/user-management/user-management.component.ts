@@ -38,9 +38,7 @@ export class UserManagementComponent implements OnInit {
     });
   }
 
-  userHasRole(roleName: string): boolean {
-    return this.loginService.userHasRole(roleName);
-  }
+ 
 
   createUser() {
     this.router.navigate(['create'], { relativeTo: this.route });

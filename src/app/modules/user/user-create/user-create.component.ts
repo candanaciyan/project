@@ -42,7 +42,7 @@ export class UserCreateComponent {
      },
      error: (err) => {
        console.log(err);
-       this.toastr.error("There is already a registered user with this email. Please try again. ");
+       this.toastr.error("Please try again. ");
      }
    });
   }

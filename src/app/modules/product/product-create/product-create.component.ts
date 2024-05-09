@@ -31,7 +31,6 @@ export class ProductCreateComponent implements OnInit {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private productService: ProductService,
-    private loginService: LoginService,
     private fb: FormBuilder,
   ) { }
 
@@ -62,7 +61,8 @@ export class ProductCreateComponent implements OnInit {
       this.productId = this.productService.editingProduct.id;
       this.productForm.patchValue(
         { name: this.productService.editingProduct.name, minimum: this.productService.editingProduct.minimum, 
-        });
+          description: this.productService.editingProduct.description, image: this.productService.editingProduct.image}
+        );
       this.selectedImage = this.productService.editingProduct.image;
       this.productService.editingProduct = null;
     } else {

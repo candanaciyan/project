@@ -58,18 +58,10 @@ previousPage() {
     }
 }
 
-  cardSelected(message: string) {
-    console.log('Card Selected: ' + message);
-  }
 
-  userHasRole(roleName: string): boolean {
-    return this.loginService.userHasRole(roleName);
-  }
 
-  createProduct() {
-    this.router.navigate(['create'], { relativeTo: this.route });
-    //router ile o sayfaya yonlendirdi 
-  }
+
+
 
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product.id).subscribe({

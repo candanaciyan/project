@@ -89,7 +89,7 @@ export class ShelfManagementComponent implements OnInit {
           this.refreshShelves();
         },
         error: (err) => {
-          this.toastr.error(err.error.mesaj);
+          this.toastr.error("Shelf can't be deleted because it has products");
         }
       });
     }
