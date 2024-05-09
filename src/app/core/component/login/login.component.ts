@@ -42,7 +42,7 @@ export class LoginComponent {
 // next donen degeri parametre olarak alabiliyor
 
 next: () => {
-        this.toastr.success('Login Successful');
+        this.toastr.success('Login Successful', '', { timeOut: 1000 });     
         this.router.navigate(['/menu']);
         
       },

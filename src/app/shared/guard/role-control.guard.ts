@@ -20,10 +20,10 @@ export function roleControlGuard(role: string): CanActivateFn {
     if (!result) {
       router.navigate(['./menu']);
       toastr.error(
-        'Bu sayfaya girmeye yetkiniz bulunmamaktadır.',
+        'You are not authorized to enter this page.',
         'Access Denied !!',
         {
-          timeOut: 2000,
+          timeOut: 1500,
         }
       );
     }
