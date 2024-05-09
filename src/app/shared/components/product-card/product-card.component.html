@@ -2,7 +2,7 @@
     <div class="card">
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
-                <img src="{{product.image}}" height="50px" class="me-2"/>
+                <img [src]="product.image" height="200px" class="me-2"/>
                 <div class="d-flex flex-column">
                     <div class="d-flex">
                         <div>Name:</div>
@@ -10,7 +10,7 @@
                     </div>
                     <div class="d-flex">
                         <div>Total Amount:</div>
-                        <div class="ms-2">{{ product.totalAmount}}</div>
+                        <div class="ms-2">{{product.totalAmount}}</div>
                     </div>
                     <div class="d-flex">
                         <div>Minimum Limit:</div>
@@ -25,12 +25,13 @@
                     </div>                   
                 </div>
             </div>
-            <div> 
-                @if (role == "admin"){
-                    <mat-icon class="edit me-1" fontIcon="edit" (click)="editProduct()"></mat-icon>
-                    <mat-icon class="close" fontIcon="close" (click)="deleteProductButtonClicked()"></mat-icon>
-                }         
-
+            <div *ngIf="role === 'admin'" class="admin-buttons">
+                <button mat-icon-button class="edit" (click)="editProduct()">
+                    <mat-icon aria-hidden="false">edit</mat-icon>
+                </button>
+                <button mat-icon-button class="close" (click)="deleteProductButtonClicked()">
+                    <mat-icon aria-hidden="false">close</mat-icon>
+                </button>
             </div>
         </div>
     </div>

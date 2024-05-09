@@ -16,11 +16,11 @@
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" [routerLink]="['/menu/product']" [class.active]="url == '/menu/product'">Product Management</a></li>
                     @if(role =='admin') {
-                      <li><a class="dropdown-item" [routerLink]="['/menu/product/create']" routerLinkActive="active">Product Create</a></li>
+                      <li><a class="dropdown-item" [routerLink]="['/menu/product/create']" >Product Create</a></li>
                     }
                     @if(role == 'supervisor') {             
-                    <li><a class="dropdown-item" [routerLink]="['/menu/product/accept']" routerLinkActive="active">Product Accept</a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/menu/product/sale']" routerLinkActive="active">Product Sale</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/product/accept']" >Product Accept</a></li>
+                    <li><a class="dropdown-item" [routerLink]="['/menu/product/sale']" >Product Sale</a></li>
                     }
                   </ul>
                 </li>

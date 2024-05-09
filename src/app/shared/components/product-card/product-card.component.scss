@@ -22,3 +22,20 @@
 .card .ms-2 {
     margin-left: 0.5rem;
 }
+.admin-buttons button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.admin-buttons button.edit:hover {
+    color: green;
+    transform: scale(1.2);
+}
+
+.admin-buttons button.close:hover {
+    color: red;
+    transform: scale(1.2);
+}
