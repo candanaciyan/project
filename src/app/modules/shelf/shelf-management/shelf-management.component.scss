@@ -1,14 +1,16 @@
 .shelfTable {
     border-collapse: collapse;
     width: 100%;
-    vertical-align: middle;
-
 }
 
 .shelfTable th, .shelfTable td {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center; /* Sütun içeriğini ortala */
     padding: 8px;
+    max-width: 150px; /* Maksimum genişliği ayarla */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .shelfTable th {
@@ -20,18 +22,9 @@
 }
 
 .shelfTable tr:hover {
-    background-color: #e9e9e9;
+    background-color: #e9e9e9b9;
 }
+
 .container-fluid {
-    background-color: #2e456e; /* Arka plan rengini buradan ayarlayabilirsiniz */
-  }
-
-/* Tüm tablo hücrelerinin genişliğini ayarla */
-.shelfTable th,
-.shelfTable td {
-    width: 100px; /* Tüm hücrelerin genişliği (örneğin) 100 piksel olacak şekilde ayarlanabilir */
-    white-space: nowrap; /* Uzun metinlerin hücrelerden taşmasını önlemek için satır sonu kesme uygulayın */
-    overflow: hidden; /* Hücre içeriğinin taşmasını önlemek için gizleme uygulayın */
-    text-overflow: ellipsis; /* Hücre içeriğinin taşması durumunda üç nokta (...) görüntüleyin */
+    background-color: #2e456e;
 }
-
