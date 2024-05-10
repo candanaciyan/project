@@ -1,45 +1,44 @@
 <div class="container-fluid user-select-none">
     <div class="mt-2">
-    @if (shelves.length == 0) {
-        It seems there are no shelves...
-    } @else {
-        <div class="mb-3">
-        <input type="text" [(ngModel)]="filterText" (input)="filterShelves()" placeholder="Enter product name to filter" style="width: 300px;">
-        
-        <table class="table table-hover shelfTable">
-            <thead>
-                <tr>
-                    <th>Shelf Id</th>
-                    <th>Shelf Count</th>
-                    <th>Difference</th>   
-                    <th>Shelf Capacity</th>                                     
-                    <th>Product Name</th>                
-
-                </tr>
-            </thead>
-            <tbody>
-                @for (shelf of filteredShelves; track shelf.id) {
-                    <tr [class.table-primary]="shelf.id == selectedShelf?.id"
-                    class="shelfRow"
-                    (click)="selectShelf(shelf)">
-                        <td>{{shelf.id}}</td>
-                        <td>{{shelf.count}}</td>
-                        <td>{{ calculateDifference(shelf) }}</td>    
-                        <td>{{shelf.capacity}}</td>                                            
-                        <td>{{shelf.productName}}</td>                                         
-                        @if (role == "admin" && selectedShelf != null && shelf.id == selectedShelf.id) { 
-                            <td>
-                                <button class="btn btn-sm btn-danger" (click)="deleteShelf()">
-                                    <span class="d-none d-md-inline">Delete</span>
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </td>
+        @if (shelves.length == 0) {
+            It seems there are no shelves...
+        } @else {
+            <div class="mb-3">
+                <div class="filter-box">
+                    <input type="text" [(ngModel)]="filterText" (input)="filterShelves()" placeholder="Enter product name to filter">
+                </div>
+                <table class="table table-hover shelfTable">
+                    <thead>
+                        <tr>
+                            <th>Shelf Id</th>
+                            <th>Shelf Count</th>
+                            <th>Difference</th>
+                            <th>Shelf Capacity</th>
+                            <th>Product Name</th>
+                            <th *ngIf="role == 'admin' && selectedShelf != null">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (shelf of filteredShelves; track shelf.id) {
+                            <tr [class.table-primary]="shelf.id == selectedShelf?.id" class="shelfRow" (click)="selectShelf(shelf)">
+                                <td>{{shelf.id}}</td>
+                                <td>{{shelf.count}}</td>
+                                <td>{{ calculateDifference(shelf) }}</td>
+                                <td>{{shelf.capacity}}</td>
+                                <td>{{shelf.productName}}</td>
+                                @if (role == "admin" && selectedShelf != null && shelf.id == selectedShelf.id) {
+                                    <td>
+                                        <button class="btn btn-sm btn-danger" (click)="deleteShelf()">
+                                            <span class="d-none d-md-inline">Delete</span>
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                }
+                            </tr>
                         }
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-    }
+                    </tbody>
+                </table>
+            </div>
+        }
     </div>
 </div>

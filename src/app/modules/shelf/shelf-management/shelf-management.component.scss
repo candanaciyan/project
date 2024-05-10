@@ -1,30 +1,44 @@
+.container-fluid {
+    background-color: #f8f9fa; /* Background color for the container */
+    padding: 20px; /* Add some padding around the container */
+}
+
+.filter-box {
+    margin-bottom: 15px; /* Add some space between filter box and table */
+}
+
+.filter-box input[type="text"] {
+    width: 100%; /* Make the filter input full-width */
+    padding: 10px; /* Add padding to the input */
+    border: 1px solid #ced4da; /* Add border to the input */
+    border-radius: 5px; /* Add border radius to the input */
+    box-sizing: border-box; /* Include padding and border in the input's total width */
+}
+
 .shelfTable {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
 }
 
 .shelfTable th, .shelfTable td {
-    border: 1px solid #dddddd;
-    text-align: center; /* Sütun içeriğini ortala */
+    border: 1px solid #113355;
     padding: 8px;
-    max-width: 150px; /* Maksimum genişliği ayarla */
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    text-align: center;
 }
 
 .shelfTable th {
-    background-color: #f2f2f2;
+    background-color: #e9ecef;
 }
 
 .shelfTable tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f8f9fa;
 }
 
 .shelfTable tr:hover {
-    background-color: #e9e9e9b9;
+    background-color: #e2e6ea;
+}
+.shelfTable th:first-child {
+    width: 80px; /* İstediğiniz genişliği burada belirleyebilirsiniz */
 }
 
-.container-fluid {
-    background-color: #2e456e;
-}
+
