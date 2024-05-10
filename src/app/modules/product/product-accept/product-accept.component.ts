@@ -46,11 +46,11 @@ export class ProductAcceptComponent {
     if (this.selectedProduct) {
       let count = this.acceptForm.get('count')!.value;
       this.productService.acceptProduct(this.selectedProduct.id, count).subscribe({
-        next: (result) => {
+        next: () => {
           this.toastr.info('Product accepted');
           this.router.navigate(['/menu']);
         },
-        error: (err)=> {
+        error: ()=> {
           this.toastr.error("Not Enough Shelf");
         }
       });

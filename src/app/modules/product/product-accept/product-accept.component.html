@@ -1,46 +1,44 @@
 <div class="container-fluid m-2">
-    <form [formGroup]="acceptForm" (submit)="submit()">
-        <div class="row">
-            <div class="col">
-                <div style="float:left">
-                    <div class="dropdown">
-                        <div >
-                            Product: 
-                        </div>
-                        <div>
-                            <button class="form-select mt-2 mb-4" type="button" id="productSelectButton"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <div>
-                                    @if (selectedProduct == null) {
-                                        Select Product
-                                    } @else {
-                                        <img src="{{selectedProduct.image}}" height="20px"/>
-                                        {{ selectedProduct.name}}
+    <div class="card" style="max-width: 400px;">
+        <div class="card-body">
+            <form [formGroup]="acceptForm" (submit)="submit()">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex">
+                            <div class="dropdown">
+                                <label for="productSelectButton" class="form-label">Product:</label>
+                                <button class="form-select mt-2 mb-4" type="button" id="productSelectButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div>
+                                        @if (selectedProduct == null) {
+                                            Select Product
+                                        } @else {
+                                            <img src="{{selectedProduct.image}}" height="20px"/>
+                                            {{ selectedProduct.name}}
+                                        }
+                                    </div>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="productSelectButton" id="products">
+                                    @for (product of products; track product.id) {
+                                        <li>
+                                            <a class="dropdown-item" (click)="productSelect(product)">
+                                                <img src="{{ product.image }}" height="30px" width="30px" class="img-dropdown">
+                                                {{ product.name}}
+                                            </a>
+                                        </li>
                                     }
-                                </div>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="productSelectButton" id="products">
-                                @for (product of products; track product.id) {
-                                    <li>
-                                        <a class="dropdown-item" (click)="productSelect(product)">
-                                            <img src="{{ product.image }}" height="30px" width="30px" class="img-dropdown">
-                                            {{ product.name}}
-                                        </a>
-                                    </li>
-                                }
-                            </ul>
+                                </ul>
+                            </div>
+                            <div id="selected-image" style="align-items: center; display:flex;margin-left:5px"></div>
                         </div>
                     </div>
                 </div>
-                <div style="float:left">
-                    <div id="selected-image" style="align-items: center; display:flex;margin-left:5px"></div>
+                <div class="mb-3">
+                    <label for="txtCount" class="form-label">Count:</label>
+                    <input formControlName="count" type="number" class="form-control" id="txtCount" placeholder="Count" style="width: 150px;">
                 </div>
-            </div>
+                <button class="btn btn-primary" type="submit">Accept</button>
+            </form>
         </div>
-        <div class="mb-3">
-            <label for="txtCount" class="form-label">Count</label>
-            <input formControlName="count" type="number" class="form-control" id="txtCount" placeholder="Count">
-        </div>
-        <button class="btn btn-primary" type="submit">Accept</button>
-    </form>
+    </div>
 </div>

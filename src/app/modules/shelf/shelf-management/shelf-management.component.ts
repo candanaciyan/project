@@ -6,7 +6,6 @@ import { LoginService } from '../../../core/service/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogueComponent } from '../../../shared/components/main-dialogue/main-dialogue.component';
 import { Shelf } from '../../../shared/model/shelf';
-import { ShelfCreateComponent } from '../shelf-create/shelf-create.component';
 
 @Component({
   selector: 'app-shelf-management',
@@ -28,7 +27,6 @@ export class ShelfManagementComponent implements OnInit {
 
 
   constructor(
-    private router: Router,
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private shelfService: ShelfService,
@@ -88,7 +86,7 @@ export class ShelfManagementComponent implements OnInit {
           this.toastr.info('Shelf deleted');
           this.refreshShelves();
         },
-        error: (err) => {
+        error: () => {
           this.toastr.error("Shelf can't be deleted because it has products");
         }
       });

@@ -13,11 +13,8 @@ export class MainDialogueComponent {
   called = '';
  
   constructor(
-    public dialogRef: MatDialogRef<MainDialogueComponent>,
-    private router: Router,
+    public dialogRef: MatDialogRef<MainDialogueComponent>,  
     public route: ActivatedRoute,
-    private toastr: ToastrService,
-
   ) {}
 //yes ve no butonlarina basinca cagrilacak metotlari girdi
 

@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../shared/service/user.service';
-import { LoginService } from '../../../core/service/login.service';
 
 @Component({
   selector: 'app-user-create',
@@ -27,7 +26,6 @@ export class UserCreateComponent {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private userService: UserService,
-    private loginService: LoginService,
   ) { }
 
 

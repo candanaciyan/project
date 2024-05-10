@@ -25,7 +25,7 @@ export class ProductCardComponent implements OnInit {
 //bu called nin  event olarak geriye bir bilgi gondermesi icin bunun  tipinin eventemitter olmasi gerekiyor
 
   constructor(
-    private router: Router,
+   
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private dialog: MatDialog,

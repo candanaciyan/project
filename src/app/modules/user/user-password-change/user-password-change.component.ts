@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { LoginService } from '../../../core/service/login.service';
-import { UserService } from '../../../shared/service/user.service';
+import { ActivatedRoute } from '@angular/router';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { User } from '../../../shared/model/user';
-import { AdminChangePasswordRequest } from '../../../shared/dto/adminChangePasswordRequest';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -27,8 +23,6 @@ export class UserPasswordChangeComponent {
 
   constructor(
     public route: ActivatedRoute,
-    private toastr: ToastrService,
-    private userService: UserService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<UserPasswordChangeComponent>,
   ) {

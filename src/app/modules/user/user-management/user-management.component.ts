@@ -3,7 +3,6 @@ import { UserService } from '../../../shared/service/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../../shared/model/user';
-import { LoginService } from '../../../core/service/login.service';
 import { UserPasswordChangeComponent } from '../user-password-change/user-password-change.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogueComponent } from '../../../shared/components/main-dialogue/main-dialogue.component';
@@ -22,7 +21,6 @@ export class UserManagementComponent implements OnInit {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private userService: UserService,
-    private loginService: LoginService,
     private dialog: MatDialog,
   ) { }
   ngOnInit(): void {
@@ -99,7 +97,7 @@ mainDeleteUser() {
         this.refreshUsers();
       },
       error: (err) => {
-        this.toastr.error(err.error.mesaj);
+        this.toastr.error(err.error.message);
       }
     });
   

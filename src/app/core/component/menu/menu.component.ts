@@ -15,7 +15,6 @@ export class MenuComponent implements OnInit {
     private loginService: LoginService,
     private router: Router,
     public route: ActivatedRoute,
-    private toastr: ToastrService,
   ) {}
 
  

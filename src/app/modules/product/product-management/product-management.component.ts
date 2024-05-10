@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { LoginService } from '../../../core/service/login.service';
 import { ProductService } from '../../../shared/service/product.service';
 import { Product } from '../../../shared/model/product';
 
@@ -23,7 +22,7 @@ export class ProductManagementComponent implements OnInit {
     public route: ActivatedRoute,
     private toastr: ToastrService,
     private productService: ProductService,
-    private loginService: LoginService,
+    
   ) { }
   ngOnInit(): void {
     this.refreshProducts();
