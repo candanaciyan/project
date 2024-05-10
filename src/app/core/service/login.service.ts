@@ -23,8 +23,8 @@ export class LoginService {
     return this.http.post<any>('/login', { email: email, password :password }).pipe(
       map(data => this.parseLoginResponse(data, email, password))
     );
-    //pipe HTTP isteğinin sonucunu işlemek için kullanılır.
-    // map() operatörü kullanılarak gelen veri dönüştürülür veya işlenir.
+    //pipe HTTP isteğinin sonucunu işlemek için
+    // map() operatörü kullanılarak gelen veri donusumu olur
 
   }
   parseLoginResponse(data: any, email: string, password: string) {

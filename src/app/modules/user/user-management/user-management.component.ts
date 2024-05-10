@@ -35,19 +35,8 @@ export class UserManagementComponent implements OnInit {
       }
     });
   }
-
- 
-
-  createUser() {
-    this.router.navigate(['create'], { relativeTo: this.route });
-    //router ile o sayfaya yonlendirdi 
-
-      }
-
-      selectUser(user: User) {
-  
-    
-          this.selectedUser = user;
+      selectUser(user: User) { 
+              this.selectedUser = user;
               }
 
   editUser() {

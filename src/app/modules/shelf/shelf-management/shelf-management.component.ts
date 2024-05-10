@@ -15,12 +15,10 @@ import { timeout } from 'rxjs';
 })
 
 
-//ve bunda daa init e ihtiyacim oldugu icin
-
 export class ShelfManagementComponent implements OnInit {
-  shelves: Shelf[]  = [];
+  shelves: Shelf[] = [];
   selectedShelf: Shelf | null = null;
-  filteredShelves: Shelf[]  = [];
+  filteredShelves: Shelf[] = [];
   filterText: string = '';
   role = '';
 
@@ -33,11 +31,11 @@ export class ShelfManagementComponent implements OnInit {
     private shelfService: ShelfService,
     private loginService: LoginService,
     private dialog: MatDialog,
-  ) {}
+  ) { }
   ngOnInit(): void {
     this.refreshShelves();
     this.role = this.loginService.getRole();
-    
+
   }
   //boyle de cagirmis olduk
 
@@ -46,31 +44,28 @@ export class ShelfManagementComponent implements OnInit {
     this.shelfService.getAllShelves().subscribe({
       next: (data) => {
         this.shelves = data;
-        
-    this.filteredShelves =data;
+
+        this.filteredShelves = data;
       }
     });
   }
 
-
   selectShelf(shelf: Shelf) {
-
-      this.selectedShelf = shelf;
-    
+    this.selectedShelf = shelf;
   }
 
   deleteShelf() {
- 
-    let dialog =  this.dialog.open(MainDialogueComponent, {
+
+    let dialog = this.dialog.open(MainDialogueComponent, {
       width: '300px',
       enterAnimationDuration: '250ms',
       exitAnimationDuration: '250ms',
     });
     dialog.afterClosed().subscribe({
       next: (data) => {
-                
+
         if (data?.result === 'yes') {
-          
+
           this.mainDeleteShelf();
         }
       }
@@ -79,10 +74,10 @@ export class ShelfManagementComponent implements OnInit {
 
   }
   mainDeleteShelf() {
-    
+
     if (this.selectedShelf) {
       this.shelfService.deleteShelf(this.selectedShelf!.id).subscribe({
-      
+
         next: () => {
           this.toastr.info('Shelf deleted');
           this.refreshShelves();
@@ -93,24 +88,27 @@ export class ShelfManagementComponent implements OnInit {
       });
     }
   }
-			// 		cevap dondugunde data olarak alip 				
-// 		ekrani guncellemek icin bunu cagirdik				
 
-filterShelves() {
-  if (!this.shelves || !this.filterText) {
-    this.filteredShelves = this.shelves; // Eğer shelves null ise, filtreleme yapmadan tüm rafları göster
-    return;
+
+  filterShelves() {
+    if (!this.shelves || !this.filterText) {
+      this.filteredShelves = this.shelves; 
+      // Eğer shelves null ise, filtreleme yapmadan tüm rafları göster
+      return;
+    }
+
+    const searchText = this.filterText.toLowerCase();
+    //kucuk harfe ceviriyor duyarliligi ayiriyor
+    this.filteredShelves = this.shelves.filter(shelf =>
+      shelf.productName && shelf.productName.toLowerCase().includes(searchText)
+    );
+    //dongu kullanarak her raftaki urun isimlerini
+    // de küçük harfe çevirip, searchText içerip içermediğini kontrol ediyor. 
   }
 
-  const searchText = this.filterText.toLowerCase();
-  this.filteredShelves = this.shelves.filter(shelf =>
-    shelf.productName && shelf.productName.toLowerCase().includes(searchText)
-  );
-}
 
-
-calculateDifference(shelf: Shelf): number {
-  return shelf.capacity - shelf.count;
-}
+  calculateDifference(shelf: Shelf): number {
+    return shelf.capacity - shelf.count;
+  }
 
 }
