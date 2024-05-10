@@ -39,8 +39,7 @@ export class ProductAcceptComponent {
   productSelect(product: Product) {
     this.selectedProduct = product;
   }
- // fruit isteyecegim fruit tipinde
-//fruiti alip degiskene aktariyor
+
 
   submit() {
     if (this.selectedProduct) {
@@ -56,15 +55,6 @@ export class ProductAcceptComponent {
       });
     }
   }
-//   secili bir fruit varsa  null olup olmadigi kontrolunu if in icinde yaziyoruz
-// countu alacagim baska bir seye ihtiyacim yok
-// fruitserviceten accept isminde metot cagiracagim  fruitin id sini ve countu verecegiz
-
-// mesaji verip
-// menuye donuyoruz
-
-// hata alirsam ise
-// burda ozel hata mesaji verecegiz
 
   
 }
