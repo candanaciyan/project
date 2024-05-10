@@ -28,7 +28,7 @@ export class AccountComponent {
     oldPassword: "",					
     newPassword: ["", [ Validators.required, Validators.minLength(3),Validators.pattern(/^(?=.*[0-9])/)] ],								
     passwordVerification: "",								
-    }, {validators: [this.passwordValidationMatchValidator('newPassword', 'passwordVerification')]});	
+    }, {validators: [this.passwordMatchValidator('newPassword', 'passwordVerification')]});	
     
     
 
@@ -37,29 +37,27 @@ export class AccountComponent {
       let newPassword = this.passwordForm.get('newPassword')!.value;
       this.userService.changePassword({oldPassword, newPassword }).subscribe({
         next: (result) => {
-          console.log(result);
-          this.toastr.info("Password Changed.");
+          this.toastr.info(result.message);
           this.router.navigate(['/menu']);
         },
         error: (err) => {
-          console.log(err);
           this.toastr.error("The old password is incorrect, try again.");
         }
       });
     }
-    passwordValidationMatchValidator(newPasswordControlName: string, passwordVerificationControlName: string): ValidatorFn {
+    passwordMatchValidator(newPasswordControlName: string, passwordVerificationControlName: string): ValidatorFn {
       return (control: AbstractControl): {[key: string]: any} | null => {
           const newPassword = control.get(newPasswordControlName);
           const passwordVerification = control.get(passwordVerificationControlName);
-          // return null if controls haven't initialized yet
+          // ılk degerler kontrol edılıyor
           if (!newPassword || !passwordVerification) {
               return null;
           }
-          // return null if the controls match
+            //  doğrulama hatası olmadığı ve formun geçerli olduğu 
           if (newPassword.value === passwordVerification.value) {
               return null;
           }
-          // otherwise, return validation error
+          
           return { 'passwordMismatch': true };
       };
   }

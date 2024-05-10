@@ -6,6 +6,7 @@ import { LoginService } from '../../../core/service/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MainDialogueComponent } from '../../../shared/components/main-dialogue/main-dialogue.component';
 import { Shelf } from '../../../shared/model/shelf';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-shelf-management',

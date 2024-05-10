@@ -25,15 +25,11 @@ export class UserService {
   deleteUser(email: string): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/user/delete', {email} );
   }
-  // updateUser(email: string): Observable<SuccessResponse> {
-  //   return this.http.post<SuccessResponse>('/user/update', {email});
-  // }
-
+ 
 
   public changePassword(dto: ChangePasswordRequest): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>("/user/changepassword", dto);
   }
-
 
  
   public changePasswordAdmin(email: string,newPassword: string ): Observable<SuccessResponse> {

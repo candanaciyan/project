@@ -19,7 +19,6 @@ export class ProductCardComponent implements OnInit {
   role = '';
   //disardan gonderilen parametreleri almasi icin buraya iki tane degisken tanimliyorum
   @Input() product: Product = new Product(0,'',0,'','',0);
-  //yazilimIlan.ts interface ini classa cevirdi. new diyerek instance da yaratmak istedigimiz icin null olmamasi icin
   @Output() delete = new EventEmitter();
   @Output() edit = new EventEmitter();
 //bu called nin  event olarak geriye bir bilgi gondermesi icin bunun  tipinin eventemitter olmasi gerekiyor
@@ -39,12 +38,24 @@ export class ProductCardComponent implements OnInit {
     
   }
 
+  productSelect(product: Product) {
+    this.productService.getProductCount(product.id).subscribe({
+      next: (data:any) => {
+        this.totalAmount = data.count;
+        //ve bu sayıyı totalAmount değişkenine atar.
+      }
+    });
+  }
+  refreshProducts() {
+    this.productService.getAllProducts().subscribe({
+      next: (result) => {
+        this.products = result;
+      }
+    });
+  }
   deleteProductButtonClicked() {
 
-    let dialog =  this.dialog.open(MainDialogueComponent, {
-      //       acmak istedigim comp adini giriyorum open icine 
-      // mesaj kutusu buyuklugu burda ayarlaniyor
-      
+    let dialog =  this.dialog.open(MainDialogueComponent, {      
             width: '300px',
             enterAnimationDuration: '250ms',
             exitAnimationDuration: '250ms',
@@ -58,20 +69,10 @@ export class ProductCardComponent implements OnInit {
           });
           dialog.componentInstance.called = 'Are you sure for delete this product?';
   }
+ 
+
 
   
-
-  // bu obsv subs metoduyla close yapildiginda su fonksiyon cagrilsin diyebiliyoruz
-  // next icinde datayi aliyoruz 
-  // data varsa ve result ozelligi yes ise  dedik.data? Yaparak pencere disina tiklandiginda null gelme hatasini onlemis olacak
-  // sil bu fruiti demis olduk yukardaki  @Input() fruit: Fruit = new Fruit(0, '', 0, ''); bunu silmis oluyoruz bu degiskendeki
-  
-  // ama bursai card comp ve bundan dolayi silme islemini  burda yapmayacagiz
-  // burdan output ile bir dis compteki yani fruit mang bir fonksiyonu cagiracagiz silme islemini ordan tetikleyecegiz
-  // yani burdan service e gitmememiz gerekiyor cunku burasi bizim card componentimiz 
-  
-
-//simdi bu metodu tanimlayacagiz kart comp ts icine
 deleteProduct() {
   if(this.product.totalAmount > 0) {
 
@@ -87,19 +88,6 @@ editProduct() {
 }
 //bu event olusturuyor ve bunun mesajini gonderiyor output dedigimiz icin bu componenti kullanan dis componente
 
-productSelect(product: Product) {
-  this.productService.getProductCount(product.id).subscribe({
-    next: (data:any) => {
-      this.totalAmount = data.count;
-    }
-  });
-}
-refreshProducts() {
-  this.productService.getAllProducts().subscribe({
-    next: (result) => {
-      this.products = result;
-    }
-  });
-}
+
 
 }

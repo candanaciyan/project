@@ -16,7 +16,6 @@ export class MainDialogueComponent {
     public dialogRef: MatDialogRef<MainDialogueComponent>,  
     public route: ActivatedRoute,
   ) {}
-//yes ve no butonlarina basinca cagrilacak metotlari girdi
 
   buttonYesClick() {
     this.dialogRef.close({"result": "yes"});

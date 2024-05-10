@@ -9,13 +9,9 @@ export function roleControlGuard(role: string): CanActivateFn {
     let toastr = inject(ToastrService);
     let router = inject(Router);
     let result = service.userHasRole(role);
-    //logserv.rollerde bizim gonderdigimiz roles arrayindeki herhangi biri var mi diye bakiyoruz
-    // neyi arattiriyoruz rolu aliyorum o rolu benim gonderdigim roles arrayindeki her rolle tek tek
-    // kiyaslayip ordan esit olani var mi diye baktiriyorum
-    // ilk buldugunu geri donduruyor
+    //buldugunu geri donduruyor
     // bulamazsa geriye undefined donduruyor
-    // bende hata donduruyorum mesaj olarak
-    
+    // bende hata donduruyorum mesaj olarak   
 
     if (!result) {
       router.navigate(['./menu']);

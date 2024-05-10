@@ -13,7 +13,7 @@ export class ProductManagementComponent implements OnInit {
   products: Product[] = [];
   allProducts: Product[] = [];
   currentPage = 1;
-  pageSize = 3; // Number of products per page
+  pageSize = 3; 
   totalPages = 0;
 
 
@@ -30,23 +30,30 @@ export class ProductManagementComponent implements OnInit {
   refreshProducts() {
     this.productService.getAllProducts().subscribe({
       next: (result) => {
-        this.products = result;
+        this.products = result;//sayfaya yansitacagimiz urunler
         this.allProducts = result;
+        //backendden gelen butun urunler
         this.totalPages = Math.ceil(this.allProducts.length / this.pageSize);
         this.updateDisplayedProducts();
+        //toplam urun / sayfa basi urun sayisi
       }
     });
   }
   updateDisplayedProducts() {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
+    //all productstan gosterilecek urunler indexi start ve end indexi ile belirleniyor ve
+    //js slice metodu ile gosterilecek urunleri aliyoruz
+    const startIndex = (this.currentPage - 1) * this.pageSize;//ilk urun index 0-2
+    const endIndex = startIndex + this.pageSize;//son urun indexi
     this.products = this.allProducts.slice(startIndex, endIndex);
+
 }
 
 nextPage() {
     if (this.currentPage < this.totalPages) {
         this.currentPage++;
         this.updateDisplayedProducts();
+        //sayfa degistiginde gosterilecek 
+        //urunler de degistigi icin tekrar bu metodu cagiriyoruz her defasinda
     }
 }
 
@@ -57,11 +64,6 @@ previousPage() {
     }
 }
 
-
-
-
-
-
   deleteProduct(product: Product) {
     this.productService.deleteProduct(product.id).subscribe({
       next: (data) => {
@@ -70,22 +72,12 @@ previousPage() {
       }
     });
   }
-  // fruiti alacak
-  // service icerisini silmek icin id yi ben verecegim burdan geriye 
-  // nextten de donen degeri okuyacagim
-  // toastr yoktu ekledik const icine
-  // bunu cagiriyoruz next icinde
-  // bu sayede guncelleme islemi yapiliyor ve ekrandan sildigi belli oluyor
-  
+
 
   editProduct(product: Product) {
     this.productService.editingProduct = product;
     this.router.navigate(['create'], { relativeTo: this.route });
   }
-//   once saklayip sonra da create ekranini acacagiz
-// editingfruit icerisine buraya gonderilen fruit objesini sakliyoruz 
-// pesinden de yonlendiriyoruz 
-//create ekranina gitti
 
 
 

@@ -31,7 +31,7 @@ export class UserCreateComponent {
       this.userService.createUser({ ...this.createForm.value }).subscribe({
         next: (resp) => {
           console.log(resp);
-          this.toastr.success('User Created');
+          this.toastr.success(resp.message);
           this.router.navigate(['..'], { relativeTo: this.route });
         },
         error: (err) => {

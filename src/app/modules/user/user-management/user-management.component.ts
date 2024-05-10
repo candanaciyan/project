@@ -63,7 +63,7 @@ export class UserManagementComponent implements OnInit {
           this.userService.changePasswordAdmin(this.selectedUser!.email,data.newPassword).subscribe({
             next: (result) => {
               console.log(result);
-              this.toastr.success("Password changed successfully.");
+              this.toastr.success(result.message);
               this.refreshUsers();
             },
             error: (err) => {
@@ -86,7 +86,7 @@ deleteUser() {
       }
     }
   });
-  dialog.componentInstance.called = 'Are you sure for delete this shelf?';
+  dialog.componentInstance.called = 'Are you sure for delete this user?';
 
 }
 mainDeleteUser() {
