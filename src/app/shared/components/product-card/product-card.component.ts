@@ -86,8 +86,5 @@ deleteProduct() {
 editProduct() {
   this.edit.emit(this.product);
 }
-//bu event olusturuyor ve bunun mesajini gonderiyor output dedigimiz icin bu componenti kullanan dis componente
-
-
 
 }

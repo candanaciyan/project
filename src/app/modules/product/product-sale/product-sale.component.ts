@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../../shared/service/product.service';
 import { LoginService } from '../../../core/service/login.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../../../shared/model/product';
 
 @Component({
@@ -16,7 +16,7 @@ export class ProductSaleComponent implements OnInit {
   selectedProduct: Product | null = null;
   totalAmount = 0;
   saleform=this.fb.nonNullable.group({
-    count: 0,
+    count: [0, [Validators.required, Validators.min(1)]],
   });
 
 
@@ -46,24 +46,23 @@ productSelect(product: Product) {
   });
 }
 submit() {
-  if (this.selectedProduct) {
+  if (this.selectedProduct && this.saleform.valid) { // Form geçerli mi kontrol ediliyor
     let count = this.saleform.get('count')!.value;
     this.productService.saleProduct(this.selectedProduct.id, count).subscribe({
       next: (result) => {
-        if(result.message == "") {
+        if (result.message == "") {
           this.toastr.info('Product sold');
-          
-        }
-        else{
+        } else {
           this.toastr.info(result.message);
         }
         this.router.navigate(['/menu']);
       },
-      error: (err)=> {
+      error: (err) => {
         this.toastr.error(err.error.message);
       }
     });
+  } else {
+    this.toastr.error("Please enter a number greater than 0");
   }
 }
-
 }

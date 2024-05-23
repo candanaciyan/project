@@ -16,8 +16,6 @@ export class ShelfService {
   getAllShelves(): Observable<Shelf[]> {
     return this.http.get<Shelf[]>('/shelf/');
   }
-  // tum shelfleri ceken metot bu geriye shelf arrayi dondurecek 
-  // parametre yok 
   
 
   createShelf(count: number,capacity: number): Observable<SuccessResponse> {

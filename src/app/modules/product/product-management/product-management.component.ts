@@ -30,9 +30,9 @@ export class ProductManagementComponent implements OnInit {
   refreshProducts() {
     this.productService.getAllProducts().subscribe({
       next: (result) => {
-        this.products = result;//sayfaya yansitacagimiz urunler
+        this.products = result;
         this.allProducts = result;
-        //backendden gelen butun urunler
+       
         this.totalPages = Math.ceil(this.allProducts.length / this.pageSize);
         this.updateDisplayedProducts();
         //toplam urun / sayfa basi urun sayisi

@@ -1,58 +1,69 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <form [formGroup]="productForm" (submit)="submit()">
-                        <div class="mb-3">
-                            <label for="txtName" class="form-label">Product Name</label>
-                            <input formControlName="name" type="text" class="form-control" id="txtName" placeholder="Product Name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtMinimum" class="form-label">Minimum</label>
-                            <input formControlName="minimum" type="number" class="form-control" id="txtMinimum" placeholder="Minimum">
-                        </div>
-                        <div class="mb-3">
-                            <label for="txtDescription" class="form-label">Description</label>
-                            <input formControlName="description" type="text" class="form-control" id="txtDescription" placeholder="Description">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Image</label>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="productSelectButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    @if (selectedImage == '') {
-                                        Select Image
-                                    } @else {
-                                        <img src="{{selectedImage}}" height="20px" class="me-2"/>
-                                        Selected Image
-                                    }
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="productSelectButton">
-                                    @for (product of getProducts(); track product.filename) {
-                                        <li>
-                                            <a class="dropdown-item" (click)="imageSelect('/assets/img/'+product.filename)">
-                                                <img src="/assets/img/{{ product.filename }}" height="30px" width="30px" class="img-dropdown">
-                                                {{ product.name}}
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary me-2">
-                                @if (productId == 0) {
-                                    Add
-                                } @else {
-                                    Update
-                                }
-                            </button>
-                            <button type="button" class="btn btn-success" routerLink="..">Cancel</button>
-                        </div>
-                    </form>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <form [formGroup]="productForm" (submit)="submit()">
+              <div class="mb-3">
+                <label for="txtName" class="form-label">Product Name</label>
+                <input formControlName="name" type="text" class="form-control" id="txtName" placeholder="Product Name">
+                <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="text-danger">
+                  Product Name is required.
                 </div>
-            </div>
+              </div>
+              <div class="mb-3">
+                <label for="txtMinimum" class="form-label">Minimum</label>
+                <input formControlName="minimum" type="number" class="form-control" id="txtMinimum" placeholder="Minimum">
+                <div *ngIf="productForm.get('minimum')?.invalid && productForm.get('minimum')?.touched" class="text-danger">
+                  Minimum is required and must be greater than 0.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="txtDescription" class="form-label">Description</label>
+                <input formControlName="description" type="text" class="form-control" id="txtDescription" placeholder="Description">
+                <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" class="text-danger">
+                  Description is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Image</label>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="productSelectButton"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    <ng-container *ngIf="selectedImage == ''; else imageSelected">
+                      Select Image
+                    </ng-container>
+                    <ng-template #imageSelected>
+                      <img [src]="selectedImage" height="20px" class="me-2"/>
+                      Selected Image
+                    </ng-template>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="productSelectButton">
+                    <li *ngFor="let product of getProducts()">
+                      <a class="dropdown-item" (click)="imageSelect('/assets/img/' + product.filename)">
+                        <img [src]="'/assets/img/' + product.filename" height="30px" width="30px" class="img-dropdown">
+                        {{ product.name }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary me-2">
+                  <ng-container *ngIf="productId == 0; else update">
+                    Add
+                  </ng-container>
+                  <ng-template #update>
+                    Update
+                  </ng-template>
+                </button>
+                <button type="button" class="btn btn-success" routerLink="..">Cancel</button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+  

@@ -20,8 +20,7 @@ export class MainDialogueComponent {
   buttonYesClick() {
     this.dialogRef.close({"result": "yes"});
   }
-  //close cagirirken close icine dialogResult tipinde istedigimiz herhangi bir cevabi dondurebiliyoruz
-//bu dialogu kapatmaya yarayacak icindeki result 
+
 
   buttonNoClick() {
     this.dialogRef.close({"result": "no"});

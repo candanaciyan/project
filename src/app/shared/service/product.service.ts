@@ -27,11 +27,7 @@ export class ProductService {
 
   deleteProduct(id: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/product/delete', { id } );
-  }
- 
-  // { id } boyle koyarsan json objesi icinde id keyine karsilik id degiskeninin degerini
-  // icine  koyuyor oluyor ve json gonderiyor bu onemli
-  
+  } 
 
   acceptProduct(productId: number, count: number): Observable<SuccessResponse> {
     return this.http.post<SuccessResponse>('/product/accept', {productId, count});

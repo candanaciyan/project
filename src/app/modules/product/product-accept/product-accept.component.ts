@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from '../../../core/service/login.service';
 import { ProductService } from '../../../shared/service/product.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../../../shared/model/product';
 
 @Component({
@@ -14,10 +14,8 @@ import { Product } from '../../../shared/model/product';
 export class ProductAcceptComponent {
   products: Product[] = [];
   selectedProduct: Product | null = null;
-  //bu degiskeni tanimladi hem resmini hem ismini saklayabilsin diye 
-
   acceptForm=this.fb.nonNullable.group({
-    count: 0,
+    count: [0, [Validators.required, Validators.min(1)]],
   });
   constructor(
     private router: Router,
@@ -42,17 +40,19 @@ export class ProductAcceptComponent {
 
 
   submit() {
-    if (this.selectedProduct) {
+    if (this.selectedProduct && this.acceptForm.valid) { 
       let count = this.acceptForm.get('count')!.value;
       this.productService.acceptProduct(this.selectedProduct.id, count).subscribe({
         next: () => {
           this.toastr.info('Product accepted');
           this.router.navigate(['/menu']);
         },
-        error: ()=> {
+        error: () => {
           this.toastr.error("Not Enough Shelf");
         }
       });
+    } else {
+      this.toastr.error("Please enter a number greater than 0");
     }
   }
 

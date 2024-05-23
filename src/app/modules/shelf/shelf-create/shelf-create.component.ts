@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../../core/service/login.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ShelfService } from '../../../shared/service/shelf.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 export class ShelfCreateComponent {
 
   shelfCreateForm = this.fb.nonNullable.group({
-    count: 1,
+    count: [1, [Validators.required, Validators.min(1)]],
     capacity: 5,     
     });
     
@@ -29,27 +29,27 @@ export class ShelfCreateComponent {
     
   ) {}
   
-
-    //  burda artik yaratma islemini yapiyoruz ne gonderiyoruz  adet  ve kapasiteyi gonderiyoruz sunucuya
-    //  degiskenin degerini degistiremeyecegimiz icin const verdik
-    //  kapasite ve adetin degerini aliyorum 
-    //  bu obje ile close ediyorum
-    //  simdi bunu cagirdigim yere gidecegim bunu alacagim ve cap ve countu okuyup 
      
-    createShelf() {
+  createShelf() {
+    if (this.shelfCreateForm.valid) {
       const count = this.shelfCreateForm.get('count')!.value;
-      const capacity = this.shelfCreateForm.get('capacity')!.value;  
-            // box creating...data geliyorsa box kayit edecegiz
-            this.shelfService.createShelf(capacity,count).subscribe({
-              next: (res) => {
-                this.toastr.info(res.message + ' shelves created');
-     
-              }
-            });
-          }   
+      const capacity = this.shelfCreateForm.get('capacity')!.value;
 
-          close() {
-            this.router.navigate(['..'], { relativeTo: this.route });
-            }
+      this.shelfService.createShelf(capacity, count).subscribe({
+        next: (res) => {
+          this.toastr.info(res.message + ' shelves created');
+        },
+        error: (err) => {
+          this.toastr.error(err.error.message);
+        }
+      });
+    } else {
+      this.toastr.error("Please enter a number greater than 0");
+    }
+  }
+
+  close() {
+    this.router.navigate(['..'], { relativeTo: this.route });
+  }
 
 }

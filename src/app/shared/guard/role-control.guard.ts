@@ -9,9 +9,7 @@ export function roleControlGuard(role: string): CanActivateFn {
     let toastr = inject(ToastrService);
     let router = inject(Router);
     let result = service.userHasRole(role);
-    //buldugunu geri donduruyor
-    // bulamazsa geriye undefined donduruyor
-    // bende hata donduruyorum mesaj olarak   
+
 
     if (!result) {
       router.navigate(['./menu']);

@@ -19,10 +19,6 @@ export const urlInterceptor: HttpInterceptorFn = (req, next) => {
     url = appConfig.serverURL + url;
     headers = headers.append('Authorization', 'Bearer ' + loginService.token);
   }
-//   interceptor icinde /assets/  baslamiyorsa diye koymamizin nedeni bu
-// bunlar baslayan istekler proje icindeki assets dizini icinden geliyor cunku
-// yani browser kendi projesi icinden bu bilgiyi okuyor oluyor
-
 
   let newReq = req.clone({
     url,
@@ -32,8 +28,7 @@ export const urlInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error) => {
       if (error instanceof HttpErrorResponse && error.url != appConfig.serverURL + '/login'
         && error.status == 403) {
-        // login işlemi yapılmıyor ve token hatası döndü ise tekrar giriş yapmayı dene
-        return loginService.relogin().pipe(
+           return loginService.relogin().pipe(
           switchMap((token: any) => {
             toastrService.info("Logged again");
             headers = headers.set('Authorization', 'Bearer ' + loginService.token);
