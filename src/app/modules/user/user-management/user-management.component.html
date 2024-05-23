@@ -15,18 +15,21 @@
                     <td>{{user.name}}</td>
                     <td>{{user.surname}}</td>
                     <td>{{user.email}}</td>
-                    <td>
-                        <div>
-                        <button class="btn btn-primary btn-sm ms-2" (click)="editUser()">
-                            <span class="btn-text">Change Password</span>
-                            <span class="btn-icon">🔑</span>
-                        </button>
-                        
-                        <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser()">
-                            <span class="btn-text">Delete</span>
-                            <span class="btn-icon">❌</span>
-                        </button>
-                    </div>
+                    <td>                        
+                        @if(user.role.id  != 1) {
+                            <div>
+                            <button class="btn btn-primary btn-sm ms-2" (click)="editUser()">
+                                <span class="btn-text">Change Password</span>
+                                <span class="btn-icon">🔑</span>
+                            </button>
+                            
+                            <button class="btn btn-danger btn-sm ms-2" (click)="deleteUser()">
+                                <span class="btn-text">Delete</span>
+                                <span class="btn-icon">❌</span>
+                            </button>  
+                        </div>
+                        }                
+                   
                     </td>
                 </tr>
                 }
